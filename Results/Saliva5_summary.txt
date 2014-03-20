@@ -1,0 +1,7 @@
+Total number of sequences (with duplicates)    : 521
+Total number of sequences (with no duplicates) : 72
+
+PATTERN   # SEQUENCES
+25        514
+13        7
+

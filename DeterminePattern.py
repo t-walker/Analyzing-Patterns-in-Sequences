@@ -17,7 +17,7 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
   @return:
   '''
   if GlobalVars.DEBUG:
-    print "S:%s" %(sample)
+    print "S :%s" %(sample)
 
   sampleLength = len(sample)
 
@@ -46,13 +46,13 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
       if F_patternMatch.size + E_patternMatch.size > sampleLength:
         if GlobalVars.DEBUG:
           snippetString = ListToString(F_sampleMatch.snippets, ",", True)
-          print "F:%s PAT(%i)" %(allelePatterns[num][F_patternMatch.startIndex:F_patternMatch.endIndex], num+1),
+          print "F*:%s PAT(%i)" %(allelePatterns[num][F_patternMatch.startIndex:F_patternMatch.endIndex], num+1),
           if snippetString != "":
             print "SNP(%s)" %(snippetString)
           else:
             print
           snippetString = ListToString(E_sampleMatch.snippets, ",", True)
-          print "E:%s PAT(%i)" %(" " * (E_patternMatch.startIndex) + allelePatterns[num][E_patternMatch.startIndex:E_patternMatch.endIndex], num+1),
+          print "E*:%s PAT(%i)" %(" " * (E_patternMatch.startIndex) + allelePatterns[num][E_patternMatch.startIndex:E_patternMatch.endIndex], num+1),
           if snippetString != "":
             print "SNP(%s)" %(snippetString)
           else:
@@ -81,13 +81,13 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
     if F_max_patternMatch.size + E_max_patternMatch.size > sampleLength:
       if GlobalVars.DEBUG:
         snippetString = ListToString(F_max_sampleMatch.snippets, ",", True)
-        print "F:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
+        print "F*:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
         if snippetString != "":
           print "SNP(%s)" %(snippetString)
         else:
           print
         snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
-        print "E:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
+        print "E*:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
         if snippetString != "":
           print "SNP(%s)" %(snippetString)
         else:
@@ -95,48 +95,222 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
       return [(F_max_sampleMatch, F_max_patternMatch), (E_max_sampleMatch, E_max_patternMatch)]
 
     # Need to find match in the middle part
-    M_max_sampleMatch = Sample(F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1)
-    M_max_patternMatch = Pattern(-1, 0)
+    #M_max_sampleMatch = Sample(-1)
+    #M_max_patternMatch = Pattern(-1, -1)
+    all_patternMatches = []
+    all_sampleMatches = []
+    returnList = [(F_max_sampleMatch, F_max_patternMatch)]
+
+    if GlobalVars.DEBUG:
+      snippetString = ListToString(F_max_sampleMatch.snippets, ",", True)
+      print "F*:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
+      if snippetString != "":
+        print "SNP(%s)" %(snippetString)
+      else:
+        print
+
     for num in range(0, numPatterns):
-      patternMatches, snippets = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
+      patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
+      all_patternMatches += patternMatches
+      all_sampleMatches += sampleMatches
 
-      if patternMatches != None:
-        for index in range(0, len(patternMatches)):
-          if M_max_sampleMatch.size == patternMatches[index].size:
-            pattern = allelePatterns[num]
-            startIndex = patternMatches[index].startIndex
-            endIndex = patternMatches[index].endIndex
+      #if len(patternMatches) > 0:
+        #for index in range(0, len(patternMatches)):
+          #if M_max_sampleMatch.size == patternMatches[index].size:
+            #pattern = allelePatterns[num]
+            #startIndex = patternMatches[index].startIndex
+            #endIndex = patternMatches[index].endIndex
 
-            M_max_patternMatch = patternMatches[index]
-            M_max_sampleMatch.snippets = snippets[index]
-            
-            if GlobalVars.DEBUG:
-              snippetString = ListToString(F_max_sampleMatch.snippets, ",", True)
-              print "F:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
-              if snippetString != "":
-                print "SNP(%s)" %(snippetString)
-              else:
-                print
-              snippetString = ListToString(M_max_sampleMatch.snippets, ",", True)
-              print "M:%s PAT(%i)" %(" " * (M_max_sampleMatch.startIndex) + allelePatterns[M_max_patternMatch.number][M_max_patternMatch.startIndex:M_max_patternMatch.endIndex], M_max_patternMatch.number+1),
-              if snippetString != "":
-                print "SNP(%s)" %(snippetString)
-              else:
-                print
-              snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
-              print "E:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
-              if snippetString != "":
-                print "SNP(%s)" %(snippetString)
-              else:
-                print
-                
-            return [(F_max_sampleMatch, F_max_patternMatch), (M_max_sampleMatch, M_max_patternMatch), (E_max_sampleMatch, E_max_patternMatch)]
-              
-          
+            #M_max_patternMatch = patternMatches[index]
+            #M_max_sampleMatch = sampleMatches[index]
+            #break
+
+          #if M_max_patternMatch.size < patternMatches[index].size:
+            #M_max_patternMatch = patternMatches[index]
+            #M_max_sampleMatch = sampleMatches[index]
+
+    #if M_max_patternMatch.size != 0:
+      #index = all_patternMatches.index(M_max_patternMatch)
+      #del all_patternMatches[index]
+      #del all_sampleMatches[index]
+
+      #if GlobalVars.DEBUG:
+        #snippetString = ListToString(F_max_sampleMatch.snippets, ",", True)
+        #print "F:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
+        #if snippetString != "":
+          #print "SNP(%s)" %(snippetString)
+        #else:
+          #print
+        #snippetString = ListToString(M_max_sampleMatch.snippets, ",", True)
+        #print "M:%s PAT(%i)" %(" " * (M_max_sampleMatch.startIndex) + allelePatterns[M_max_patternMatch.number][M_max_patternMatch.startIndex:M_max_patternMatch.endIndex], M_max_patternMatch.number+1),
+        #if snippetString != "":
+          #print "SNP(%s)" %(snippetString)
+        #else:
+          #print
+        #snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
+        #print "E:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
+        #if snippetString != "":
+          #print "SNP(%s)" %(snippetString)
+        #else:
+          #print
+
+      #return [(F_max_sampleMatch, F_max_patternMatch), (M_max_sampleMatch, M_max_patternMatch), (E_max_sampleMatch, E_max_patternMatch)]
+
+    hasNoMatch = False
+    if len(all_patternMatches) > 0:
+      startConvergeIndex = F_max_sampleMatch.endIndex - 1
+      endConvergeIndex = E_max_sampleMatch.startIndex
+
+      while startConvergeIndex < endConvergeIndex:
+        M_max_sampleMatch = Sample(-1)
+        M_max_patternMatch = Pattern(-1, -1)
+
+        for index in range(0, len(all_sampleMatches)):
+          if (startConvergeIndex >= all_sampleMatches[index].startIndex) and (startConvergeIndex < all_sampleMatches[index].endIndex):
+            if M_max_patternMatch.size < all_patternMatches[index].size:
+              M_max_patternMatch = all_patternMatches[index]
+              M_max_sampleMatch = all_sampleMatches[index]
+
+        if M_max_patternMatch.size != 0:
+          del_index = all_patternMatches.index(M_max_patternMatch)
+          del all_patternMatches[del_index]
+          del all_sampleMatches[del_index]
+
+          returnList += [(M_max_sampleMatch, M_max_patternMatch)]
+          startConvergeIndex = M_max_sampleMatch.endIndex - 1
+
+          if GlobalVars.DEBUG:
+            snippetString = ListToString(M_max_sampleMatch.snippets, ",", True)
+            print "M*:%s PAT(%i)" %(" " * (M_max_sampleMatch.startIndex) + allelePatterns[M_max_patternMatch.number][M_max_patternMatch.startIndex:M_max_patternMatch.endIndex], M_max_patternMatch.number+1),
+            if snippetString != "":
+              print "SNP(%s)" %(snippetString)
+            else:
+              print
+        else:
+          hasNoMatch = True
+          break
+
+      if GlobalVars.DEBUG:
+        snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
+        print "E*:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
+        if snippetString != "":
+          print "SNP(%s)" %(snippetString)
+        else:
+          print
+
+      if not hasNoMatch:
+        return returnList + [(E_max_sampleMatch, E_max_patternMatch)]
+
+    if GlobalVars.DEBUG:
+      snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
+      print "E*:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
+      if snippetString != "":
+        print "SNP(%s)" %(snippetString)
+      else:
+        print
+
   # No match
   return None
 
 #end DeterminePattern()
+
+
+def SearchForSNPs(sample, sampleClass, pattern, patternClass):
+  '''
+  @desc:
+  @return:
+  '''
+
+  S_startIndex = sampleClass.startIndex
+  P_startIndex = patternClass.startIndex
+  S_endIndex = sampleClass.endIndex
+  P_endIndex = patternClass.endIndex
+
+  # Search towards FRONT
+  snippet = []
+  count = len(sampleClass.snippets)
+  prevMatch = True
+
+  if count == 2:
+    noMismatch = []
+  elif count == 1:
+    noMismatch = [True]
+  else:
+    noMismatch = [True, True]
+
+  while True:
+    if sample[S_startIndex - 1] == pattern[P_startIndex - 1]:
+      P_startIndex -= 1
+      S_startIndex -= 1
+      prevMatch = True
+    # this elif allows to have snippet in the pattern
+    elif True == prevMatch and len(noMismatch):
+      noMismatch.pop()
+      S_startIndex -= 1
+      P_startIndex -= 1
+      snippet.append(S_startIndex)
+      prevMatch = False
+    else:
+      # idenfity starting index of match pattern
+      if True == prevMatch:
+        prevMatch = False
+      else:
+        if len(snippet):
+          snippet.pop()
+          S_startIndex += 1
+          P_startIndex += 1
+
+      break
+
+  sampleClass.snippets += snippet
+
+  # Search towards END
+  snippet = []
+  count = len(sampleClass.snippets)
+  prevMatch = True
+
+  if count == 2:
+    noMismatch = []
+  elif count == 1:
+    noMismatch = [True]
+  else:
+    noMismatch = [True, True]
+
+  while True:
+    if sample[S_endIndex] == pattern[P_endIndex]:
+      P_endIndex += 1
+      S_endIndex += 1
+      prevMatch = True
+    # this elif allows to have snippet in the pattern
+    elif True == prevMatch and len(noMismatch):
+      noMismatch.pop()
+      snippet.append(S_endIndex)
+      P_endIndex += 1
+      S_endIndex += 1
+      prevMatch = False
+    else:
+      # idenfity starting index of match pattern
+      if True == prevMatch:
+        prevMatch = False
+      else:
+        if len(snippet):
+          snippet.pop()
+          P_endIndex -= 1
+          S_endIndex -= 1
+      break
+
+  sampleClass.startIndex = S_startIndex
+  sampleClass.endIndex = S_endIndex
+  sampleClass.size = S_endIndex - S_startIndex
+  sampleClass.snippets += snippet
+
+  patternClass.startIndex = P_startIndex
+  patternClass.endIndex = P_endIndex
+  patternClass.size = P_endIndex - P_startIndex
+
+  return patternClass, sampleClass
+
+#end SearchForSNPs()
 
 
 def MidSimilarity(sample, sampleStartIndex, sampleEndIndex, pattern, patternNum):
@@ -148,83 +322,102 @@ def MidSimilarity(sample, sampleStartIndex, sampleEndIndex, pattern, patternNum)
   sampleMidStringLen = len(sampleMidString)
 
   patternMatches = []
-  snippets = []
+  sampleMatches = []
 
   for i in range(3, len(pattern) - 3 - sampleMidStringLen + 1):
     patternTemp = pattern[i:i+sampleMidStringLen]
 
     patternMatch = None
+    sampleMatch = None
     snippet = []
-    startIndex = -1
-    endIndex = -1
+    P_startIndex = -1
+    P_endIndex = -1
+    S_startIndex = -1
+    S_endIndex = -1
 
     countSimilarity = 0
     snippetCount = 0
     #tempString = ""
     addOne = False
+    prevMatch = False
 
     for index in range(0, sampleMidStringLen):
       if sampleMidString[index] == patternTemp[index]:
-        if startIndex == -1:
-          startIndex = index + i
+        prevMatch = True
+        if P_startIndex == -1:
+          P_startIndex = index + i
+          S_startIndex = sampleStartIndex + index
         countSimilarity += 1
         #tempString += sampleMidString[index]
-        if len(snippet) == 1:
+        if len(snippet) == 1 and prevMatch == False:
           addOne = True
         if (index + 1) == sampleMidStringLen:
           if addOne:
             countSimilarity += 1
           if countSimilarity >= 4:
-            endIndex = index + i + 1
-            patternMatch = Pattern(patternNum, startIndex, endIndex)
+            P_endIndex = index + i + 1
+            patternMatch = Pattern(patternNum, P_startIndex, P_endIndex)
+            sampleMatch = Sample(S_startIndex, S_startIndex + patternMatch.size)
+            sampleMatch.snippets = snippet
             patternMatches.append(patternMatch)
-            snippets.append(snippet)
-            if GlobalVars.DEBUG:
-              if 0 < len(snippet):
-                snippetString = ListToString(snippet, ",", True)
-                print "%s PAT(%i) SNP(%s)" %(pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1, snippetString)
-              else:
-                print "%s PAT(%i)" %(pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1)
+            sampleMatches.append(sampleMatch)
+            #if GlobalVars.DEBUG:
+              #if 0 < len(snippet):
+                #snippetString = ListToString(snippet, ",", True)
+                #print "  %s PAT(%i) SNP(%s)" %(" " * S_startIndex + pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1, snippetString)
+              #else:
+                #print "  %s PAT(%i)" %(" " * S_startIndex + pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1)
 ##              #print tempString
       else:
-        if startIndex != -1:
+        if P_startIndex != -1:
           #snippetCount += 1
-          if len(snippet) == 0:
+          if prevMatch == True and len(snippet) == 0:
             snippet.append(sampleStartIndex + index)
+            prevMatch = False
             #tempString += '*'
           else:
             if addOne:
               countSimilarity += 1
               addOne = False
             if countSimilarity >= 4:
-              if (index + i) == snippet[-1]:
-                endIndex = index + i - 2
+              if (sampleStartIndex + index - 1) == snippet[-1]:
+                P_endIndex = index + i - 1
                 #tempString = tempString[0:-2]
                 snippet = []
               else:
-                endIndex = index + i
-              patternMatch = Pattern(patternNum, startIndex, endIndex)
+                P_endIndex = index + i
+              patternMatch = Pattern(patternNum, P_startIndex, P_endIndex)
+              sampleMatch = Sample(S_startIndex, S_startIndex + patternMatch.size)
+              sampleMatch.snippets = snippet
               patternMatches.append(patternMatch)
-              snippets.append(snippet)
-              if GlobalVars.DEBUG:
-                if 0 < len(snippet):
-                  snippetString = ListToString(snippet, ",", True)
-                  print "%s PAT(%i) SNP(%s)" %(pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1, snippetString)
-                else:
-                  print "%s PAT(%i)" %(pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1)
+              sampleMatches.append(sampleMatch)
+              #if GlobalVars.DEBUG:
+                #if 0 < len(snippet):
+                  #snippetString = ListToString(snippet, ",", True)
+                  #print "  %s PAT(%i) SNP(%s)" %(" " * S_startIndex + pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1, snippetString)
+                #else:
+                  #print "  %s PAT(%i)" %(" " * S_startIndex + pattern[patternMatch.startIndex:patternMatch.endIndex], patternNum+1)
 ##                #print tempString
             snippetCount = 0
             #tempString = ""
             countSimilarity = 0
             patternMatch = Pattern(patternNum)
             snippet = []
-            startIndex = -1
-            endIndex = -1
-            
-  if len(patternMatches) == 0:
-    return None, None
-  else:
-    return patternMatches, snippets
+            P_startIndex = -1
+            P_endIndex = -1
+            prevMatch = False
+
+  for index in range(0, len(patternMatches)):
+    patternMatches[index], sampleMatches[index] = SearchForSNPs(sample, sampleMatches[index], pattern, patternMatches[index])
+    #if GlobalVars.DEBUG:
+      #snippet = sampleMatches[index].snippets
+      #if 0 < len(snippet):
+        #snippetString = ListToString(snippet, ",", True)
+        #print "M :%s PAT(%i) SNP(%s)" %(" " * sampleMatches[index].startIndex + pattern[patternMatches[index].startIndex:patternMatches[index].endIndex], patternNum+1, snippetString)
+      #else:
+        #print "M :%s PAT(%i)" %(" " * sampleMatches[index].startIndex + pattern[patternMatches[index].startIndex:patternMatches[index].endIndex], patternNum+1)
+
+  return patternMatches, sampleMatches
 #end MidSimilarity()
 
 
@@ -264,6 +457,7 @@ def FrontSimilarity(sample, pattern, patternNum):
 
   patternMatch = None
   sampleMatch = None
+  isAddOne = False
 
   # loop matching pattern to sample starting at the start index
   for sampleIndex in range(0, sampleLen):
@@ -273,6 +467,7 @@ def FrontSimilarity(sample, pattern, patternNum):
         startIndex = 0
       endIndex = sampleIndex
       prevMatch = True
+      isAddOne = True
     # this elif allows to have one snippet in the pattern
     #elif True == noMismatch:
     elif True == prevMatch and len(noMismatch):
@@ -291,23 +486,26 @@ def FrontSimilarity(sample, pattern, patternNum):
       else:
         if len(snippet):
           snippet.pop()
+      isAddOne = False
       break
 
   # Disregard if number of similarities is < miminum length
-  if (endIndex - startIndex) + 1 < GlobalVars.MIN_LEN:
+  if (endIndex - startIndex) < GlobalVars.MIN_LEN:
     return sampleMatch, patternMatch
   else:
     # both sample and pattern indices are the same
+    if isAddOne:
+      endIndex += 1
     sampleMatch = Sample(startIndex, endIndex)
     patternMatch = Pattern(patternNum, startIndex, endIndex)
     sampleMatch.snippets = snippet
 
-  if GlobalVars.DEBUG:
-    if 0 < len(snippet):
-      snippetString = ListToString(snippet, ",", True)
-      print "F:%s PAT(%i) SNP(%s)" %(pattern[startIndex:endIndex], patternNum+1, snippetString)
-    else:
-      print "F:%s PAT(%i)" %(pattern[startIndex:endIndex], patternNum+1)
+  #if GlobalVars.DEBUG:
+    #if 0 < len(snippet):
+      #snippetString = ListToString(snippet, ",", True)
+      #print "F :%s PAT(%i) SNP(%s)" %(pattern[startIndex:endIndex], patternNum+1, snippetString)
+    #else:
+      #print "F :%s PAT(%i)" %(pattern[startIndex:endIndex], patternNum+1)
 
   return sampleMatch, patternMatch
 
@@ -366,22 +564,22 @@ def EndSimilarity(sample, pattern, patternNum):
       break
 
   # Disregard if number of similarities is < miminum length
-  if (endIndexP - startIndexP) + 1  < GlobalVars.MIN_LEN:
+  if (endIndexP - startIndexP) < GlobalVars.MIN_LEN:
     return sampleMatch, patternMatch
   else:
     sampleMatch = Sample((startIndexS), endIndexS)
     patternMatch = Pattern(patternNum, startIndexP, endIndexP)
     sampleMatch.snippets = snippet
 
-  if GlobalVars.DEBUG:
-    # Compute for aligning string of the pattern
-    temp = " " * startIndexS
+  #if GlobalVars.DEBUG:
+    ## Compute for aligning string of the pattern
+    #temp = " " * startIndexS
 
-    if 0 < len(snippet):
-      snippetString = ListToString(snippet, ",", True)
-      print "E:%s PAT(%i) SNP(%s)" %(temp+pattern[startIndexP:endIndexP], patternNum+1, snippetString)
-    else:
-      print "E:%s PAT(%i)" %(temp+pattern[startIndexP:endIndexP], patternNum+1)
+    #if 0 < len(snippet):
+      #snippetString = ListToString(snippet, ",", True)
+      #print "E :%s PAT(%i) SNP(%s)" %(temp+pattern[startIndexP:endIndexP], patternNum+1, snippetString)
+    #else:
+      #print "E :%s PAT(%i)" %(temp+pattern[startIndexP:endIndexP], patternNum+1)
 
   return sampleMatch, patternMatch
 

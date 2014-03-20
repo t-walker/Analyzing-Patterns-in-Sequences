@@ -38,20 +38,41 @@ def main(argv):
 
 
   # Step 1: Retrieve allele patterns
-  alleleIds, allelePatterns = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", False, "Allele Patterns")
+  alleleIds, allelePatterns, numPatterns = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", False, "Allele Patterns")
 
   # Step 2: Load sample sequences and identify duplicates
-  sampleIds, sampleSequences =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", True, "Sample Sequences")
+  sampleIds, sampleSequences, totalSequences =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", True, "Sample Sequences")
 
   # Step 3: Identify what pattern the sample sequence belongs
   numSamples = len(sampleIds)
-  numPatterns = len(allelePatterns)
+
+  print "Total number of sequences (with duplicates)    : %d" %(totalSequences)
+  print "Total number of sequences (with no duplicates) : %d" %(numSamples)
+  print
 
   # Loop through all samples and determine it's allele pattern combination
+  # [total, pattern, []]
+  results = {}
+  noMatch = []
   for num in range(0, numSamples):
     if GlobalVars.DEBUG:
       print sampleIds[num]
+
     patternMatch = DeterminePattern(sampleSequences[num], allelePatterns, numPatterns)
+    numberOfSequences = len(sampleIds[num].split(","))
+
+    if patternMatch != None:
+      pattern = ""
+      for index in range(0, len(patternMatch)):
+        pattern += str(patternMatch[index][1].number + 1)
+
+      if pattern not in results:
+        results[pattern] = [numberOfSequences, patternMatch]
+      else:
+        results[pattern][0] += numberOfSequences
+        results[pattern][1] += patternMatch
+    else:
+      noMatch += [(sampleIds[num], sampleSequences[num])]
 
     if GlobalVars.DEBUG:
       if patternMatch == None:
@@ -59,6 +80,20 @@ def main(argv):
       else:
         print "Matched!\n"
 
+  sortedKeys = sorted(results, key=results.get, reverse=True)
+  print "PATTERN   # SEQUENCES"
+  for key in sortedKeys:
+    print "%-7s   %d" %(key, results[key][0])
+
+  print
+
+  noMatchLen = len(noMatch)
+  if noMatchLen > 0:
+    print "Total number of sequences (with no match) : %d" %(noMatchLen)
+    print
+    for index in range(0, noMatchLen):
+      print "Seq %d: %s" %(index+1, noMatch[index][0])
+      print "%s\n" %(noMatch[index][1])
 
 if __name__ == '__main__':
   main(sys.argv[1:])

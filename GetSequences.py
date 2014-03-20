@@ -18,22 +18,22 @@ def GetSequences(fileName="", fileType="fasta", path="", noDuplicates=False, nam
   sequences = []   # allele pattern's amino acid sequences
 
 
-  if GlobalVars.DEBUG:
-    print "[%s]" %(name)
+  #if GlobalVars.DEBUG:
+    #print "[%s]" %(name)
 
   # Parse through the file, normally a fasta file
   # and retrive all sequences
   for seq_record in SeqIO.parse(path + fileName, fileType):
 
-    if GlobalVars.DEBUG:
-      print "Seq %i:" %(ctr + 1), seq_record.id, str(seq_record.seq)
+    #if GlobalVars.DEBUG:
+      #print "Seq %i:" %(ctr + 1), seq_record.id, str(seq_record.seq)
 
     # Duplicates accepted
     if not noDuplicates:
       seqIds.insert(ctr, seq_record.id)
       sequences.insert(ctr, str(seq_record.seq))
 
-    # No Duplicates  
+    # No Duplicates
     else:
       isAdded = False  # flag variable to check whether sequence has been added
 
@@ -53,12 +53,12 @@ def GetSequences(fileName="", fileType="fasta", path="", noDuplicates=False, nam
   if GlobalVars.DEBUG:
     print
 
-  if noDuplicates and GlobalVars.DEBUG:
-    print "[%s - No Duplicates]" %(name)
+  #if noDuplicates and GlobalVars.DEBUG:
+    #print "[%s - No Duplicates]" %(name)
 
-    for i in range(0, len(seqIds)):
-      print "Seq %i:" %(i + 1), seqIds[i], sequences[i]
-    print
+    #for i in range(0, len(seqIds)):
+      #print "Seq %i:" %(i + 1), seqIds[i], sequences[i]
+    #print
 
-  return seqIds, sequences
+  return seqIds, sequences, ctr
 # end GetSequences()
