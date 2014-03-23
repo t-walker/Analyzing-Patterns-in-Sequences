@@ -57,6 +57,7 @@ def main(argv):
   for num in range(0, numSamples):
     if GlobalVars.DEBUG:
       print sampleIds[num]
+      print "Seq #%d:" %(num + 1)
 
     patternMatch = DeterminePattern(sampleSequences[num], allelePatterns, numPatterns)
     numberOfSequences = len(sampleIds[num].split(","))
