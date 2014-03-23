@@ -4,8 +4,6 @@ Create on January 5, 2014
 
 @author: Gabriel de la Cruz
 
-TODO: When printing match sample/pattern, should show the SNPs from pattern
-
 '''
 
 import GlobalVars
@@ -107,8 +105,6 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
       return [(F_max_sampleMatch, F_max_patternMatch), (E_max_sampleMatch, E_max_patternMatch)]
 
     # Need to find match in the middle part
-    #M_max_sampleMatch = Sample(-1)
-    #M_max_patternMatch = Pattern(-1, -1)
     all_patternMatches = []
     all_sampleMatches = []
     returnList = [(F_max_sampleMatch, F_max_patternMatch)]
@@ -127,50 +123,6 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
         if patternMatches[index] not in all_patternMatches:
           all_patternMatches.append(patternMatches[index])
           all_sampleMatches.append(sampleMatches[index])
-        #all_patternMatches += patternMatches
-        #all_sampleMatches += sampleMatches
-
-      #if len(patternMatches) > 0:
-        #for index in range(0, len(patternMatches)):
-          #if M_max_sampleMatch.size == patternMatches[index].size:
-            #pattern = allelePatterns[num]
-            #startIndex = patternMatches[index].startIndex
-            #endIndex = patternMatches[index].endIndex
-
-            #M_max_patternMatch = patternMatches[index]
-            #M_max_sampleMatch = sampleMatches[index]
-            #break
-
-          #if M_max_patternMatch.size < patternMatches[index].size:
-            #M_max_patternMatch = patternMatches[index]
-            #M_max_sampleMatch = sampleMatches[index]
-
-    #if M_max_patternMatch.size != 0:
-      #index = all_patternMatches.index(M_max_patternMatch)
-      #del all_patternMatches[index]
-      #del all_sampleMatches[index]
-
-      #if GlobalVars.DEBUG:
-        #snippetString = ListToString(F_max_sampleMatch.snippets, ",", True)
-        #print "F:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
-        #if snippetString != "":
-          #print "SNP(%s)" %(snippetString)
-        #else:
-          #print
-        #snippetString = ListToString(M_max_sampleMatch.snippets, ",", True)
-        #print "M:%s PAT(%i)" %(" " * (M_max_sampleMatch.startIndex) + allelePatterns[M_max_patternMatch.number][M_max_patternMatch.startIndex:M_max_patternMatch.endIndex], M_max_patternMatch.number+1),
-        #if snippetString != "":
-          #print "SNP(%s)" %(snippetString)
-        #else:
-          #print
-        #snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
-        #print "E:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
-        #if snippetString != "":
-          #print "SNP(%s)" %(snippetString)
-        #else:
-          #print
-
-      #return [(F_max_sampleMatch, F_max_patternMatch), (M_max_sampleMatch, M_max_patternMatch), (E_max_sampleMatch, E_max_patternMatch)]
 
     hasNoMatch = False
     if len(all_patternMatches) > 0:
@@ -247,15 +199,6 @@ def SearchForSNPs(sample, sampleClass, pattern, patternClass):
   count = len(sampleClass.snippets)
   prevMatch = True
 
-  #noMismatch = [True] * len(pattern)
-
-##  if count == 2:
-##    noMismatch = []
-##  elif count == 1:
-##    noMismatch = [True]
-##  else:
-##    noMismatch = [True, True]
-
   while True:
     if sample[S_startIndex] == pattern[P_startIndex]:
       P_startIndex -= 1
@@ -263,7 +206,6 @@ def SearchForSNPs(sample, sampleClass, pattern, patternClass):
       prevMatch = True
     # this elif allows to have snippet in the pattern
     elif True == prevMatch:
-      #noMismatch.pop()
       snippet.append(S_startIndex)
       S_startIndex -= 1
       P_startIndex -= 1
@@ -287,13 +229,6 @@ def SearchForSNPs(sample, sampleClass, pattern, patternClass):
   count = len(sampleClass.snippets)
   prevMatch = True
 
-##  if count == 2:
-##    noMismatch = []
-##  elif count == 1:
-##    noMismatch = [True]
-##  else:
-##    noMismatch = [True, True]
-
   while True:
     if sample[S_endIndex] == pattern[P_endIndex]:
       P_endIndex += 1
@@ -301,7 +236,6 @@ def SearchForSNPs(sample, sampleClass, pattern, patternClass):
       prevMatch = True
     # this elif allows to have snippet in the pattern
     elif True == prevMatch:
-      #noMismatch.pop()
       snippet.append(S_endIndex)
       P_endIndex += 1
       S_endIndex += 1
@@ -452,9 +386,7 @@ def FrontSimilarity(sample, pattern, patternNum):
   sampleLen = len(sample)
   patternLen = len(pattern)
 
-  #noMismatch = True
-  #noMismatch = [True, True]
-  noMismatch = [True] * patternLen
+  noMismatch = [True] * patternLen # CAN BE REMOVED
   prevMatch = True
 
   startIndex = 0
@@ -466,28 +398,20 @@ def FrontSimilarity(sample, pattern, patternNum):
   #isAddOne = False
 
   # loop matching pattern to sample starting at the start index
-##  for sampleIndex in range(0, sampleLen):
   while endIndex < sampleLen and endIndex < patternLen:
     if sample[endIndex] == pattern[endIndex]:
-##      if 0 == sampleIndex:
-##        # identify starting index of match pattern
-##        startIndex = 0
       endIndex += 1
       prevMatch = True
       #isAddOne = True
-    # this elif allows to have one snippet in the pattern
-    #elif True == noMismatch:
+    # this elif allows to have snippet in the pattern
     elif True == prevMatch and len(noMismatch):
       noMismatch.pop()
-      #endIndex = sampleIndex - 1
       snippet.append(endIndex)
       endIndex += 1
-      #noMismatch = False
       prevMatch = False
     else:
       # identify ending index of match pattern
       if True == prevMatch:
-        #endIndex = sampleIndex - 1
         prevMatch = False
       else:
         if len(snippet):
@@ -499,9 +423,6 @@ def FrontSimilarity(sample, pattern, patternNum):
   if (endIndex - startIndex) < GlobalVars.MIN_LEN:
     return sampleMatch, patternMatch
   else:
-    # both sample and pattern indices are the same
-##    if isAddOne:
-##      endIndex += 1
     sampleMatch = Sample(startIndex, endIndex)
     patternMatch = Pattern(patternNum, startIndex, endIndex)
     sampleMatch.snippets = snippet
@@ -526,9 +447,7 @@ def EndSimilarity(sample, pattern, patternNum):
   sampleLen = len(sample)
   patternLen = len(pattern)
 
-  #noMismatch = True
-  #noMismatch = [True, True]
-  noMismatch = [True] * patternLen
+  noMismatch = [True] * patternLen # CAN BE REMOVED
   prevMatch = True
 
   startIndexP = patternLen - 1
@@ -546,8 +465,7 @@ def EndSimilarity(sample, pattern, patternNum):
       startIndexS -= 1
       startIndexP -= 1
       prevMatch = True
-    # this elif allows to have one snippet in the pattern
-    #elif True == noMismatch:
+    # this elif allows to have snippet in the pattern
     elif True == prevMatch and len(noMismatch):
       noMismatch.pop()
       startIndexS -= 1
