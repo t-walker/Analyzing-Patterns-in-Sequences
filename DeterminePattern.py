@@ -9,7 +9,7 @@ Create on January 5, 2014
 import GlobalVars
 from DataLibs import *
 
-def DeterminePattern(sample, allelePatterns, numPatterns):
+def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
   '''
   @desc: Determine the pattern of the sample
   @return:
@@ -22,7 +22,7 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
   # Determine if sample sequence is exactly equal to any of the patterns
   patternIndex = SampleIsAPattern(sample, allelePatterns)
   if 0 <= patternIndex:
-    sampleMatch = Sample(0, len(sample) - 1)
+    sampleMatch = Sample(0, len(sample) - 1, sampleNum)
     patternMatch = Pattern(patternIndex, 0, sampleLength)
     return [(sampleMatch, patternMatch)]
 
@@ -36,6 +36,8 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
   for num in range(0, numPatterns):
     # Identify pattern of the front part of the sample
     F_sampleMatch, F_patternMatch = FrontSimilarity(sample, allelePatterns[num], num)
+    if F_sampleMatch != None:
+      F_sampleMatch.number = sampleNum
 
     # Front match with the pattern with SNP
     if F_patternMatch != None and F_patternMatch.size == sampleLength:
@@ -45,11 +47,13 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
         if snippetString != "":
           print "SNP(%s)" %(snippetString)
         else:
-          print    
+          print
       return [(F_sampleMatch, F_patternMatch)]
-    
+
     # Identify pattern of the end part of the sample
     E_sampleMatch, E_patternMatch = EndSimilarity(sample, allelePatterns[num], num)
+    if E_sampleMatch != None:
+      E_sampleMatch.number = sampleNum
 
     if F_patternMatch != None and E_patternMatch != None:
       # Front and end match with the same pattern
@@ -62,7 +66,7 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
           else:
             print
           snippetString = ListToString(E_sampleMatch.snippets, ",", True)
-          print "E*:%s PAT(%i)" %(" " * (E_patternMatch.startIndex) + allelePatterns[num][E_patternMatch.startIndex:E_patternMatch.endIndex], num+1),
+          print "E*:%s PAT(%i)" %(" " * (E_sampleMatch.startIndex) + allelePatterns[num][E_patternMatch.startIndex:E_patternMatch.endIndex], num+1),
           if snippetString != "":
             print "SNP(%s)" %(snippetString)
           else:
@@ -122,6 +126,7 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
       for index in range (0, len(patternMatches)):
         if patternMatches[index] not in all_patternMatches:
           all_patternMatches.append(patternMatches[index])
+          sampleMatches[index].number = sampleNum
           all_sampleMatches.append(sampleMatches[index])
 
     hasNoMatch = False
@@ -130,7 +135,7 @@ def DeterminePattern(sample, allelePatterns, numPatterns):
       endConvergeIndex = E_max_sampleMatch.startIndex
 
       while startConvergeIndex < endConvergeIndex:
-        M_max_sampleMatch = Sample(-1)
+        M_max_sampleMatch = Sample(-1, -1, sampleNum)
         M_max_patternMatch = Pattern(-1, -1)
 
         for index in range(0, len(all_sampleMatches)):
@@ -427,12 +432,12 @@ def FrontSimilarity(sample, pattern, patternNum):
     patternMatch = Pattern(patternNum, startIndex, endIndex)
     sampleMatch.snippets = snippet
 
-##  if GlobalVars.DEBUG:
-##    if 0 < len(snippet):
-##      snippetString = ListToString(snippet, ",", True)
-##      print "F :%s PAT(%i) SNP(%s)" %(pattern[startIndex:endIndex], patternNum+1, snippetString)
-##    else:
-##      print "F :%s PAT(%i)" %(pattern[startIndex:endIndex], patternNum+1)
+  #if GlobalVars.DEBUG:
+    #if 0 < len(snippet):
+      #snippetString = ListToString(snippet, ",", True)
+      #print "F :%s PAT(%i) SNP(%s)" %(pattern[startIndex:endIndex], patternNum+1, snippetString)
+    #else:
+      #print "F :%s PAT(%i)" %(pattern[startIndex:endIndex], patternNum+1)
 
   return sampleMatch, patternMatch
 
@@ -468,9 +473,9 @@ def EndSimilarity(sample, pattern, patternNum):
     # this elif allows to have snippet in the pattern
     elif True == prevMatch and len(noMismatch):
       noMismatch.pop()
+      snippet.append(startIndexS)
       startIndexS -= 1
       startIndexP -= 1
-      snippet.append(startIndexS)
       prevMatch = False
     else:
       # idenfity starting index of match pattern
@@ -491,15 +496,15 @@ def EndSimilarity(sample, pattern, patternNum):
     patternMatch = Pattern(patternNum, startIndexP, endIndexP)
     sampleMatch.snippets = snippet
 
-##  if GlobalVars.DEBUG:
-##    # Compute for aligning string of the pattern
-##    temp = " " * startIndexS
-##
-##    if 0 < len(snippet):
-##      snippetString = ListToString(snippet, ",", True)
-##      print "E :%s PAT(%i) SNP(%s)" %(temp+pattern[startIndexP:endIndexP], patternNum+1, snippetString)
-##    else:
-##      print "E :%s PAT(%i)" %(temp+pattern[startIndexP:endIndexP], patternNum+1)
+  #if GlobalVars.DEBUG:
+    ## Compute for aligning string of the pattern
+    #temp = " " * startIndexS
+
+    #if 0 < len(snippet):
+      #snippetString = ListToString(snippet, ",", True)
+      #print "E :%s PAT(%i) SNP(%s)" %(temp+pattern[startIndexP:endIndexP], patternNum+1, snippetString)
+    #else:
+      #print "E :%s PAT(%i)" %(temp+pattern[startIndexP:endIndexP], patternNum+1)
 
   return sampleMatch, patternMatch
 

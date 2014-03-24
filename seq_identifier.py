@@ -10,10 +10,36 @@ import GlobalVars
 from DataLibs import *
 from GetSequences import GetSequences
 from DeterminePattern import DeterminePattern
+from AssembleFASTAFiles import WriteToFile, WriteToFileNoMatches
 
 
 def usage():
   print 'seq_identifier.py -p <patternFile> -s <sampleFile>'
+
+##################################################################
+# NEEDS SOME CHANGING TO CONSIDER MISSING CHARACTER IN SAMPLE    #
+##################################################################
+def CombineSimilarPattern(patternMatch):
+  totalPatterns = len(patternMatch)
+  if totalPatterns == 1:
+    return patternMatch
+  else:
+    startIndex = 0
+    while True:
+      if patternMatch[startIndex][1].number == patternMatch[startIndex+1][1].number:
+        patternMatch[startIndex][1].endIndex = patternMatch[startIndex+1][1].endIndex
+        patternMatch[startIndex][1].size = patternMatch[startIndex][1].endIndex - patternMatch[startIndex][1].startIndex
+        patternMatch[startIndex][0].snippets += patternMatch[startIndex+1][0].snippets
+        patternMatch[startIndex][0].endIndex = patternMatch[startIndex+1][0].endIndex
+        patternMatch[startIndex][0].size = patternMatch[startIndex][0].endIndex - patternMatch[startIndex][0].startIndex
+        del patternMatch[startIndex+1]
+        totalPatterns -= 1
+      else:
+        startIndex += 1
+      if (startIndex+1) == totalPatterns:
+        break
+  return patternMatch
+
 
 def main(argv):
 
@@ -55,12 +81,14 @@ def main(argv):
   results = {}
   noMatch = []
   for num in range(0, numSamples):
+    numberOfSequences = len(sampleIds[num].split(","))
     if GlobalVars.DEBUG:
       print sampleIds[num]
-      print "Seq #%d:" %(num + 1)
+      #print "Seq #%d with %d sequence(s):" %(num + 1, numberOfSequences)
 
-    patternMatch = DeterminePattern(sampleSequences[num], allelePatterns, numPatterns)
-    numberOfSequences = len(sampleIds[num].split(","))
+    patternMatch = DeterminePattern(sampleSequences[num], num, allelePatterns, numPatterns)
+    if patternMatch != None:
+      patternMatch = CombineSimilarPattern(patternMatch)
 
     if patternMatch != None:
       pattern = ""
@@ -68,10 +96,10 @@ def main(argv):
         pattern += str(patternMatch[index][1].number + 1)
 
       if pattern not in results:
-        results[pattern] = [numberOfSequences, patternMatch]
+        results[pattern] = [numberOfSequences, [patternMatch]]
       else:
         results[pattern][0] += numberOfSequences
-        results[pattern][1] += patternMatch
+        results[pattern][1] += [patternMatch]
     else:
       noMatch += [(sampleIds[num], sampleSequences[num])]
 
@@ -85,13 +113,14 @@ def main(argv):
   print "PATTERN   # SEQUENCES"
   for key in sortedKeys:
     print "%-7s   %d" %(key, results[key][0])
-
+    WriteToFile(sampleFile.split('.')[0], key, results[key][1], sampleIds, sampleSequences)
   print
 
   noMatchLen = len(noMatch)
   if noMatchLen > 0:
     print "Total number of sequences (with no match) : %d" %(noMatchLen)
     print
+    WriteToFileNoMatches(sampleFile.split('.')[0], noMatch, sampleIds, sampleSequences)
     for index in range(0, noMatchLen):
       print "Seq %d: %s" %(index+1, noMatch[index][0])
       print "%s\n" %(noMatch[index][1])

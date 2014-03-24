@@ -9,14 +9,15 @@ class Pattern:
     self.startIndex = startIndex
     self.endIndex = endIndex
     self.number = number
-    self.size = (endIndex - startIndex) 
+    self.size = (endIndex - startIndex)
 
 class Sample:
-  def __init__(self, startIndex=-1, endIndex=-1):
+  def __init__(self, startIndex=-1, endIndex=-1, number=None):
     self.startIndex = startIndex
     self.endIndex = endIndex
+    self.number = number
     self.snippets = []
-    self.size = (endIndex - startIndex) 
+    self.size = (endIndex - startIndex)
 
 
 def ListToString(items, delim="", sort=False):
