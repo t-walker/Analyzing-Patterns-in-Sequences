@@ -1,5 +1,5 @@
 #!/usr/bin/python -tt
-# python seq_identifier.py -p pseudogenes_aminoacidsHVR_5.fa -s MS_1376Translations.fa -d
+# python seq_identifier.py -p Allels_Trimv2.fa -s MS_1376Translations.fa -d
 import os
 import sys
 import getopt

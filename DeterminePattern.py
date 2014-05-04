@@ -108,12 +108,17 @@ def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
           print
       return [(F_max_sampleMatch, F_max_patternMatch), (E_max_sampleMatch, E_max_patternMatch)]
 
-    # Need to find match in the middle part
+
+  # Need to find match in the middle part
+  if F_max_patternMatch == None or E_max_patternMatch == None:
+
     all_patternMatches = []
     all_sampleMatches = []
-    returnList = [(F_max_sampleMatch, F_max_patternMatch)]
+    returnList = []
+    if F_max_patternMatch != None:
+      returnList = [(F_max_sampleMatch, F_max_patternMatch)]
 
-    if GlobalVars.DEBUG:
+    if GlobalVars.DEBUG and F_max_sampleMatch != None:
       snippetString = ListToString(F_max_sampleMatch.snippets, ",", True)
       print "F*:%s PAT(%i)" %(allelePatterns[F_max_patternMatch.number][F_max_patternMatch.startIndex:F_max_patternMatch.endIndex], F_max_patternMatch.number+1),
       if snippetString != "":
@@ -122,17 +127,66 @@ def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
         print
 
     for num in range(0, numPatterns):
-      patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
+      # fron has match and end has match:
+      if F_max_patternMatch != None and E_max_patternMatch != None:
+        patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
+      # front has match but no match on end
+      if F_max_patternMatch != None and E_max_patternMatch == None:
+        # NEW CHANGES
+        patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, sampleLength-1, allelePatterns[num], num)
+        #return None # TEMPORARY
+      # front has no match but end has match
+      elif F_max_patternMatch == None and E_max_patternMatch != None:
+        # NEW CHANGES
+        patternMatches, sampleMatches = MidSimilarity(sample, 0, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
+        #return None # TEMPORARY
+      else:
+        patternMatches, sampleMatches = MidSimilarity(sample, 0, sampleLength-1, allelePatterns[num], num)
+      #patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
       for index in range (0, len(patternMatches)):
         if patternMatches[index] not in all_patternMatches:
           all_patternMatches.append(patternMatches[index])
           sampleMatches[index].number = sampleNum
           all_sampleMatches.append(sampleMatches[index])
 
+    # remove patterns with the same length hitting on same part of the sample
+    for outer_index in range(0, len(all_sampleMatches)):
+      isDuplicate = False
+      if all_sampleMatches[outer_index].startIndex == -1:
+        continue
+      for inner_index in range(0, len(all_sampleMatches)):
+        if inner_index == outer_index:
+          continue
+        if all_sampleMatches[outer_index].startIndex == all_sampleMatches[inner_index].startIndex and \
+           all_sampleMatches[outer_index].endIndex == all_sampleMatches[inner_index].endIndex:
+          isDuplicate = True
+          all_sampleMatches[inner_index].number = -1
+        # this remove a pattern that is within another pattern that is bigger
+        elif all_sampleMatches[outer_index].startIndex <= all_sampleMatches[inner_index].startIndex and \
+             all_sampleMatches[outer_index].endIndex >= all_sampleMatches[inner_index].endIndex:
+          all_sampleMatches[inner_index].number = -1
+      if isDuplicate:
+          all_sampleMatches[outer_index].number = -1
+
+    index = len(all_sampleMatches) - 1
+    while index >= 0:
+      if all_sampleMatches[index].number == -1:
+        del all_sampleMatches[index]
+        del all_patternMatches[index]
+      index = index - 1
+      if index < 0:
+        break
+
     hasNoMatch = False
     if len(all_patternMatches) > 0:
-      startConvergeIndex = F_max_sampleMatch.endIndex - 1
-      endConvergeIndex = E_max_sampleMatch.startIndex
+      if F_max_sampleMatch == None:
+        startConvergeIndex = 0
+      else:
+        startConvergeIndex = F_max_sampleMatch.endIndex - 1
+      if E_max_sampleMatch == None:
+        endConvergeIndex = sampleLength - 1
+      else:
+        endConvergeIndex = E_max_sampleMatch.startIndex
 
       while startConvergeIndex < endConvergeIndex:
         M_max_sampleMatch = Sample(-1, -1, sampleNum)
@@ -163,7 +217,7 @@ def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
           hasNoMatch = True
           break
 
-      if GlobalVars.DEBUG:
+      if GlobalVars.DEBUG and E_max_sampleMatch != None:
         snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
         print "E*:%s PAT(%i)" %(" " * (E_max_sampleMatch.startIndex) + allelePatterns[E_max_patternMatch.number][E_max_patternMatch.startIndex:E_max_patternMatch.endIndex], E_max_patternMatch.number+1),
         if snippetString != "":
@@ -172,7 +226,9 @@ def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
           print
 
       if not hasNoMatch:
-        return returnList + [(E_max_sampleMatch, E_max_patternMatch)]
+        if E_max_patternMatch != None:
+          returnList += [(E_max_sampleMatch, E_max_patternMatch)]
+        return returnList
 
 ##    if GlobalVars.DEBUG:
 ##      snippetString = ListToString(E_max_sampleMatch.snippets, ",", True)
@@ -235,6 +291,7 @@ def SearchForSNPs(sample, sampleClass, pattern, patternClass):
   prevMatch = True
 
   while True:
+
     if sample[S_endIndex] == pattern[P_endIndex]:
       P_endIndex += 1
       S_endIndex += 1
@@ -250,6 +307,14 @@ def SearchForSNPs(sample, sampleClass, pattern, patternClass):
       if True == prevMatch:
         prevMatch = False
       else:
+        if len(snippet):
+          snippet.pop()
+          P_endIndex -= 1
+          S_endIndex -= 1
+      break
+
+    if S_endIndex == len(sample):
+      if False == prevMatch:
         if len(snippet):
           snippet.pop()
           P_endIndex -= 1
@@ -353,13 +418,13 @@ def MidSimilarity(sample, sampleStartIndex, sampleEndIndex, pattern, patternNum)
 
   for index in range(0, len(patternMatches)):
     patternMatches[index], sampleMatches[index] = SearchForSNPs(sample, sampleMatches[index], pattern, patternMatches[index])
-##    if GlobalVars.DEBUG:
-##      snippet = sampleMatches[index].snippets
-##      if 0 < len(snippet):
-##        snippetString = ListToString(snippet, ",", True)
-##        print "M :%s PAT(%i) SNP(%s)" %(" " * sampleMatches[index].startIndex + pattern[patternMatches[index].startIndex:patternMatches[index].endIndex], patternNum+1, snippetString)
-##      else:
-##        print "M :%s PAT(%i)" %(" " * sampleMatches[index].startIndex + pattern[patternMatches[index].startIndex:patternMatches[index].endIndex], patternNum+1)
+    #if GlobalVars.DEBUG:
+      #snippet = sampleMatches[index].snippets
+      #if 0 < len(snippet):
+        #snippetString = ListToString(snippet, ",", True)
+        #print "M :%s PAT(%i) SNP(%s)" %(" " * sampleMatches[index].startIndex + pattern[patternMatches[index].startIndex:patternMatches[index].endIndex], patternNum+1, snippetString)
+      #else:
+        #print "M :%s PAT(%i)" %(" " * sampleMatches[index].startIndex + pattern[patternMatches[index].startIndex:patternMatches[index].endIndex], patternNum+1)
 
   return patternMatches, sampleMatches
 #end MidSimilarity()
@@ -432,12 +497,12 @@ def FrontSimilarity(sample, pattern, patternNum):
     patternMatch = Pattern(patternNum, startIndex, endIndex)
     sampleMatch.snippets = snippet
 
-  #if GlobalVars.DEBUG:
-    #if 0 < len(snippet):
-      #snippetString = ListToString(snippet, ",", True)
-      #print "F :%s PAT(%i) SNP(%s)" %(pattern[startIndex:endIndex], patternNum+1, snippetString)
-    #else:
-      #print "F :%s PAT(%i)" %(pattern[startIndex:endIndex], patternNum+1)
+##  if GlobalVars.DEBUG:
+##    if 0 < len(snippet):
+##      snippetString = ListToString(snippet, ",", True)
+##      print "F :%s PAT(%i) SNP(%s)" %(pattern[startIndex:endIndex], patternNum+1, snippetString)
+##    else:
+##      print "F :%s PAT(%i)" %(pattern[startIndex:endIndex], patternNum+1)
 
   return sampleMatch, patternMatch
 
@@ -496,15 +561,15 @@ def EndSimilarity(sample, pattern, patternNum):
     patternMatch = Pattern(patternNum, startIndexP, endIndexP)
     sampleMatch.snippets = snippet
 
-  #if GlobalVars.DEBUG:
-    ## Compute for aligning string of the pattern
-    #temp = " " * startIndexS
-
-    #if 0 < len(snippet):
-      #snippetString = ListToString(snippet, ",", True)
-      #print "E :%s PAT(%i) SNP(%s)" %(temp+pattern[startIndexP:endIndexP], patternNum+1, snippetString)
-    #else:
-      #print "E :%s PAT(%i)" %(temp+pattern[startIndexP:endIndexP], patternNum+1)
+##  if GlobalVars.DEBUG:
+##    # Compute for aligning string of the pattern
+##    temp = " " * startIndexS
+##
+##    if 0 < len(snippet):
+##      snippetString = ListToString(snippet, ",", True)
+##      print "E :%s PAT(%i) SNP(%s)" %(temp+pattern[startIndexP:endIndexP], patternNum+1, snippetString)
+##    else:
+##      print "E :%s PAT(%i)" %(temp+pattern[startIndexP:endIndexP], patternNum+1)
 
   return sampleMatch, patternMatch
 

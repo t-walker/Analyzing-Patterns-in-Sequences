@@ -1,0 +1,863 @@
+[DEBUG MODE]
+
+
+Total number of sequences (with duplicates)    : 487
+Total number of sequences (with no duplicates) : 115
+
+3pass_p0/290/ccs_translation_frame_+1,3pass_p0/5288/ccs_translation_frame_+1,3pass_p0/16398/ccs_translation_frame_+1,3pass_p0/17279/ccs_translation_frame_+1,3pass_p0/23383/ccs_translation_frame_+1,3pass_p0/26756/ccs_translation_frame_+1,3pass_p0/30219/ccs_translation_frame_+1,3pass_p0/32251/ccs_translation_frame_+1,3pass_p0/67624/ccs_translation_frame_+1,3pass_p0/80751/ccs_translation_frame_+1,3pass_p0/99822/ccs_translation_frame_+1,3pass_p0/109422/ccs_translation_frame_+1,3pass_p0/136264/ccs_translation_frame_+1,3pass_p0/138247/ccs_translation_frame_+1,3pass_p0/153264/ccs_translation_frame_+1
+S :KWGNAVENATNGDKVSQNVCKGTGSTGSSGNKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGMA
+M*:KWGNAVENATNGDKVSQNVCKGTGSTGSSGNKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGMA PAT(1)
+Matched!
+
+3pass_p0/679/ccs_translation_frame_+1,3pass_p0/4928/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCG PAT(5) SNP(6)
+M*:                            SGNKCGTT PAT(1) SNP(32,35)
+No Match
+
+3pass_p0/1249/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTAPPRLVRCSLRVQTHCFLLRGTKTPSTRQGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTA PAT(2)
+No Match
+
+3pass_p0/1285/ccs_translation_frame_+1,3pass_p0/1427/ccs_translation_frame_+1,3pass_p0/2125/ccs_translation_frame_+1,3pass_p0/2273/ccs_translation_frame_+1,3pass_p0/2773/ccs_translation_frame_+1,3pass_p0/3623/ccs_translation_frame_+1,3pass_p0/5774/ccs_translation_frame_+1,3pass_p0/7065/ccs_translation_frame_+1,3pass_p0/7195/ccs_translation_frame_+1,3pass_p0/7891/ccs_translation_frame_+1,3pass_p0/8235/ccs_translation_frame_+1,3pass_p0/9770/ccs_translation_frame_+1,3pass_p0/10852/ccs_translation_frame_+1,3pass_p0/12078/ccs_translation_frame_+1,3pass_p0/13259/ccs_translation_frame_+1,3pass_p0/14110/ccs_translation_frame_+1,3pass_p0/14220/ccs_translation_frame_+1,3pass_p0/15327/ccs_translation_frame_+1,3pass_p0/15501/ccs_translation_frame_+1,3pass_p0/16837/ccs_translation_frame_+1,3pass_p0/17546/ccs_translation_frame_+1,3pass_p0/17549/ccs_translation_frame_+1,3pass_p0/17803/ccs_translation_frame_+1,3pass_p0/18146/ccs_translation_frame_+1,3pass_p0/19055/ccs_translation_frame_+1,3pass_p0/19864/ccs_translation_frame_+1,3pass_p0/20940/ccs_translation_frame_+1,3pass_p0/21191/ccs_translation_frame_+1,3pass_p0/21737/ccs_translation_frame_+1,3pass_p0/21920/ccs_translation_frame_+1,3pass_p0/21959/ccs_translation_frame_+1,3pass_p0/23314/ccs_translation_frame_+1,3pass_p0/23546/ccs_translation_frame_+1,3pass_p0/23605/ccs_translation_frame_+1,3pass_p0/23774/ccs_translation_frame_+1,3pass_p0/25568/ccs_translation_frame_+1,3pass_p0/26758/ccs_translation_frame_+1,3pass_p0/27173/ccs_translation_frame_+1,3pass_p0/27803/ccs_translation_frame_+1,3pass_p0/28057/ccs_translation_frame_+1,3pass_p0/28745/ccs_translation_frame_+1,3pass_p0/28905/ccs_translation_frame_+1,3pass_p0/29085/ccs_translation_frame_+1,3pass_p0/29551/ccs_translation_frame_+1,3pass_p0/29855/ccs_translation_frame_+1,3pass_p0/30486/ccs_translation_frame_+1,3pass_p0/30841/ccs_translation_frame_+1,3pass_p0/30844/ccs_translation_frame_+1,3pass_p0/31660/ccs_translation_frame_+1,3pass_p0/31977/ccs_translation_frame_+1,3pass_p0/32418/ccs_translation_frame_+1,3pass_p0/32483/ccs_translation_frame_+1,3pass_p0/34327/ccs_translation_frame_+1,3pass_p0/34620/ccs_translation_frame_+1,3pass_p0/35708/ccs_translation_frame_+1,3pass_p0/37041/ccs_translation_frame_+1,3pass_p0/37771/ccs_translation_frame_+1,3pass_p0/37814/ccs_translation_frame_+1,3pass_p0/38381/ccs_translation_frame_+1,3pass_p0/41068/ccs_translation_frame_+1,3pass_p0/41752/ccs_translation_frame_+1,3pass_p0/41953/ccs_translation_frame_+1,3pass_p0/42094/ccs_translation_frame_+1,3pass_p0/42638/ccs_translation_frame_+1,3pass_p0/43447/ccs_translation_frame_+1,3pass_p0/44673/ccs_translation_frame_+1,3pass_p0/45622/ccs_translation_frame_+1,3pass_p0/45890/ccs_translation_frame_+1,3pass_p0/46927/ccs_translation_frame_+1,3pass_p0/47663/ccs_translation_frame_+1,3pass_p0/47855/ccs_translation_frame_+1,3pass_p0/48111/ccs_translation_frame_+1,3pass_p0/48542/ccs_translation_frame_+1,3pass_p0/48652/ccs_translation_frame_+1,3pass_p0/49375/ccs_translation_frame_+1,3pass_p0/50130/ccs_translation_frame_+1,3pass_p0/50451/ccs_translation_frame_+1,3pass_p0/51741/ccs_translation_frame_+1,3pass_p0/52038/ccs_translation_frame_+1,3pass_p0/53198/ccs_translation_frame_+1,3pass_p0/53308/ccs_translation_frame_+1,3pass_p0/53334/ccs_translation_frame_+1,3pass_p0/54511/ccs_translation_frame_+1,3pass_p0/54700/ccs_translation_frame_+1,3pass_p0/55023/ccs_translation_frame_+1,3pass_p0/55284/ccs_translation_frame_+1,3pass_p0/55588/ccs_translation_frame_+1,3pass_p0/55831/ccs_translation_frame_+1,3pass_p0/56272/ccs_translation_frame_+1,3pass_p0/59510/ccs_translation_frame_+1,3pass_p0/59836/ccs_translation_frame_+1,3pass_p0/60529/ccs_translation_frame_+1,3pass_p0/60942/ccs_translation_frame_+1,3pass_p0/61369/ccs_translation_frame_+1,3pass_p0/61731/ccs_translation_frame_+1,3pass_p0/61810/ccs_translation_frame_+1,3pass_p0/63219/ccs_translation_frame_+1,3pass_p0/63254/ccs_translation_frame_+1,3pass_p0/64136/ccs_translation_frame_+1,3pass_p0/64438/ccs_translation_frame_+1,3pass_p0/64469/ccs_translation_frame_+1,3pass_p0/64601/ccs_translation_frame_+1,3pass_p0/65086/ccs_translation_frame_+1,3pass_p0/65298/ccs_translation_frame_+1,3pass_p0/65560/ccs_translation_frame_+1,3pass_p0/66064/ccs_translation_frame_+1,3pass_p0/66708/ccs_translation_frame_+1,3pass_p0/66898/ccs_translation_frame_+1,3pass_p0/71163/ccs_translation_frame_+1,3pass_p0/72464/ccs_translation_frame_+1,3pass_p0/73311/ccs_translation_frame_+1,3pass_p0/73794/ccs_translation_frame_+1,3pass_p0/75667/ccs_translation_frame_+1,3pass_p0/76106/ccs_translation_frame_+1,3pass_p0/76470/ccs_translation_frame_+1,3pass_p0/76547/ccs_translation_frame_+1,3pass_p0/77451/ccs_translation_frame_+1,3pass_p0/78374/ccs_translation_frame_+1,3pass_p0/78728/ccs_translation_frame_+1,3pass_p0/78987/ccs_translation_frame_+1,3pass_p0/80204/ccs_translation_frame_+1,3pass_p0/80426/ccs_translation_frame_+1,3pass_p0/81183/ccs_translation_frame_+1,3pass_p0/82239/ccs_translation_frame_+1,3pass_p0/82316/ccs_translation_frame_+1,3pass_p0/82696/ccs_translation_frame_+1,3pass_p0/82763/ccs_translation_frame_+1,3pass_p0/83289/ccs_translation_frame_+1,3pass_p0/84228/ccs_translation_frame_+1,3pass_p0/84510/ccs_translation_frame_+1,3pass_p0/84580/ccs_translation_frame_+1,3pass_p0/84940/ccs_translation_frame_+1,3pass_p0/84950/ccs_translation_frame_+1,3pass_p0/85811/ccs_translation_frame_+1,3pass_p0/85872/ccs_translation_frame_+1,3pass_p0/87405/ccs_translation_frame_+1,3pass_p0/87859/ccs_translation_frame_+1,3pass_p0/88335/ccs_translation_frame_+1,3pass_p0/88476/ccs_translation_frame_+1,3pass_p0/88945/ccs_translation_frame_+1,3pass_p0/89310/ccs_translation_frame_+1,3pass_p0/92476/ccs_translation_frame_+1,3pass_p0/92873/ccs_translation_frame_+1,3pass_p0/93445/ccs_translation_frame_+1,3pass_p0/94479/ccs_translation_frame_+1,3pass_p0/95209/ccs_translation_frame_+1,3pass_p0/95534/ccs_translation_frame_+1,3pass_p0/96114/ccs_translation_frame_+1,3pass_p0/96120/ccs_translation_frame_+1,3pass_p0/96763/ccs_translation_frame_+1,3pass_p0/96857/ccs_translation_frame_+1,3pass_p0/98257/ccs_translation_frame_+1,3pass_p0/100146/ccs_translation_frame_+1,3pass_p0/100287/ccs_translation_frame_+1,3pass_p0/100651/ccs_translation_frame_+1,3pass_p0/102543/ccs_translation_frame_+1,3pass_p0/103020/ccs_translation_frame_+1,3pass_p0/103170/ccs_translation_frame_+1,3pass_p0/103493/ccs_translation_frame_+1,3pass_p0/104334/ccs_translation_frame_+1,3pass_p0/106026/ccs_translation_frame_+1,3pass_p0/106103/ccs_translation_frame_+1,3pass_p0/106586/ccs_translation_frame_+1,3pass_p0/106834/ccs_translation_frame_+1,3pass_p0/108151/ccs_translation_frame_+1,3pass_p0/109351/ccs_translation_frame_+1,3pass_p0/110946/ccs_translation_frame_+1,3pass_p0/111901/ccs_translation_frame_+1,3pass_p0/111945/ccs_translation_frame_+1,3pass_p0/112124/ccs_translation_frame_+1,3pass_p0/112271/ccs_translation_frame_+1,3pass_p0/113126/ccs_translation_frame_+1,3pass_p0/113152/ccs_translation_frame_+1,3pass_p0/113366/ccs_translation_frame_+1,3pass_p0/113909/ccs_translation_frame_+1,3pass_p0/115936/ccs_translation_frame_+1,3pass_p0/116963/ccs_translation_frame_+1,3pass_p0/117262/ccs_translation_frame_+1,3pass_p0/117314/ccs_translation_frame_+1,3pass_p0/117898/ccs_translation_frame_+1,3pass_p0/118591/ccs_translation_frame_+1,3pass_p0/119243/ccs_translation_frame_+1,3pass_p0/119250/ccs_translation_frame_+1,3pass_p0/119316/ccs_translation_frame_+1,3pass_p0/119550/ccs_translation_frame_+1,3pass_p0/119865/ccs_translation_frame_+1,3pass_p0/123110/ccs_translation_frame_+1,3pass_p0/123127/ccs_translation_frame_+1,3pass_p0/123371/ccs_translation_frame_+1,3pass_p0/123521/ccs_translation_frame_+1,3pass_p0/123892/ccs_translation_frame_+1,3pass_p0/123894/ccs_translation_frame_+1,3pass_p0/124262/ccs_translation_frame_+1,3pass_p0/124470/ccs_translation_frame_+1,3pass_p0/124491/ccs_translation_frame_+1,3pass_p0/125367/ccs_translation_frame_+1,3pass_p0/125398/ccs_translation_frame_+1,3pass_p0/125834/ccs_translation_frame_+1,3pass_p0/126518/ccs_translation_frame_+1,3pass_p0/127409/ccs_translation_frame_+1,3pass_p0/127643/ccs_translation_frame_+1,3pass_p0/127665/ccs_translation_frame_+1,3pass_p0/128292/ccs_translation_frame_+1,3pass_p0/129037/ccs_translation_frame_+1,3pass_p0/129068/ccs_translation_frame_+1,3pass_p0/129104/ccs_translation_frame_+1,3pass_p0/129364/ccs_translation_frame_+1,3pass_p0/129460/ccs_translation_frame_+1,3pass_p0/130429/ccs_translation_frame_+1,3pass_p0/130752/ccs_translation_frame_+1,3pass_p0/130793/ccs_translation_frame_+1,3pass_p0/131154/ccs_translation_frame_+1,3pass_p0/131291/ccs_translation_frame_+1,3pass_p0/132402/ccs_translation_frame_+1,3pass_p0/133488/ccs_translation_frame_+1,3pass_p0/133782/ccs_translation_frame_+1,3pass_p0/133874/ccs_translation_frame_+1,3pass_p0/134709/ccs_translation_frame_+1,3pass_p0/135273/ccs_translation_frame_+1,3pass_p0/135736/ccs_translation_frame_+1,3pass_p0/136069/ccs_translation_frame_+1,3pass_p0/136363/ccs_translation_frame_+1,3pass_p0/136456/ccs_translation_frame_+1,3pass_p0/136589/ccs_translation_frame_+1,3pass_p0/136605/ccs_translation_frame_+1,3pass_p0/137150/ccs_translation_frame_+1,3pass_p0/137208/ccs_translation_frame_+1,3pass_p0/137448/ccs_translation_frame_+1,3pass_p0/137694/ccs_translation_frame_+1,3pass_p0/138193/ccs_translation_frame_+1,3pass_p0/138426/ccs_translation_frame_+1,3pass_p0/138968/ccs_translation_frame_+1,3pass_p0/139457/ccs_translation_frame_+1,3pass_p0/139783/ccs_translation_frame_+1,3pass_p0/139923/ccs_translation_frame_+1,3pass_p0/140153/ccs_translation_frame_+1,3pass_p0/140260/ccs_translation_frame_+1,3pass_p0/142061/ccs_translation_frame_+1,3pass_p0/142118/ccs_translation_frame_+1,3pass_p0/142265/ccs_translation_frame_+1,3pass_p0/142559/ccs_translation_frame_+1,3pass_p0/143270/ccs_translation_frame_+1,3pass_p0/144815/ccs_translation_frame_+1,3pass_p0/144859/ccs_translation_frame_+1,3pass_p0/146862/ccs_translation_frame_+1,3pass_p0/147140/ccs_translation_frame_+1,3pass_p0/148394/ccs_translation_frame_+1,3pass_p0/148653/ccs_translation_frame_+1,3pass_p0/149073/ccs_translation_frame_+1,3pass_p0/149760/ccs_translation_frame_+1,3pass_p0/150090/ccs_translation_frame_+1,3pass_p0/150392/ccs_translation_frame_+1,3pass_p0/154718/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4)
+Matched!
+
+3pass_p0/3098/ccs_translation_frame_+1
+S :KWGNAVESATALLVVMN*VRRCVARVH*WHQCGVTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+No Match
+
+3pass_p0/4330/ccs_translation_frame_+1,3pass_p0/8277/ccs_translation_frame_+1,3pass_p0/10232/ccs_translation_frame_+1,3pass_p0/19751/ccs_translation_frame_+1,3pass_p0/39715/ccs_translation_frame_+1,3pass_p0/46812/ccs_translation_frame_+1,3pass_p0/47799/ccs_translation_frame_+1,3pass_p0/83934/ccs_translation_frame_+1,3pass_p0/87680/ccs_translation_frame_+1,3pass_p0/87989/ccs_translation_frame_+1,3pass_p0/96585/ccs_translation_frame_+1,3pass_p0/100898/ccs_translation_frame_+1,3pass_p0/104723/ccs_translation_frame_+1,3pass_p0/108325/ccs_translation_frame_+1,3pass_p0/108334/ccs_translation_frame_+1,3pass_p0/118263/ccs_translation_frame_+1,3pass_p0/127305/ccs_translation_frame_+1,3pass_p0/127319/ccs_translation_frame_+1,3pass_p0/129161/ccs_translation_frame_+1,3pass_p0/136309/ccs_translation_frame_+1,3pass_p0/136584/ccs_translation_frame_+1,3pass_p0/153106/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA PAT(5)
+Matched!
+
+3pass_p0/6047/ccs_translation_frame_+1,3pass_p0/7384/ccs_translation_frame_+1,3pass_p0/58468/ccs_translation_frame_+1,3pass_p0/97091/ccs_translation_frame_+1,3pass_p0/120392/ccs_translation_frame_+1,3pass_p0/122023/ccs_translation_frame_+1,3pass_p0/138749/ccs_translation_frame_+1,3pass_p0/143627/ccs_translation_frame_+1
+S :KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/6317/ccs_translation_frame_+1
+S :KWVMQ*RVLLHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGM
+No Match
+
+3pass_p0/7436/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKEGVWQGYH*WQPVWG*RHQWQHQQWKA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+M*:KWGNAIESATGTTSGDELSK PAT(5)
+No Match
+
+3pass_p0/8240/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/8876/ccs_translation_frame_+1,3pass_p0/119157/ccs_translation_frame_+1,3pass_p0/120311/ccs_translation_frame_+1,3pass_p0/149855/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSG PAT(4)
+No Match
+
+3pass_p0/10621/ccs_translation_frame_+1,3pass_p0/87814/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGKNSGDTNGSSTTQHKISAVFTEDAAAQLSTMDNTTINTTGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVN PAT(5) SNP(35)
+M*:                            SGTQCGKNSGDTNGSSTTQHKISAVFT PAT(3) SNP(31)
+M*:                                                KISEVFTE PAT(2) SNP(52)
+M*:                                                     FTAD PAT(4) SNP(56)
+No Match
+
+3pass_p0/11671/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGKPVWG*RHQWQHQTMASLVLYSTLTVQRLSHQWTPLPVVLVTPSACRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSG PAT(5)
+No Match
+
+3pass_p0/14984/ccs_translation_frame_+1
+S :KWGNAVESATGTY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/15880/ccs_translation_frame_+1
+S :KWVMQ*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPT*WQNHSSITADSDTTLLSAESSNISTSGW
+No Match
+
+3pass_p0/16469/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGT PAT(5) SNP(6)
+No Match
+
+3pass_p0/17029/ccs_translation_frame_+1,3pass_p0/23693/ccs_translation_frame_+1,3pass_p0/28303/ccs_translation_frame_+1,3pass_p0/32408/ccs_translation_frame_+1,3pass_p0/37088/ccs_translation_frame_+1,3pass_p0/39136/ccs_translation_frame_+1,3pass_p0/39372/ccs_translation_frame_+1,3pass_p0/45256/ccs_translation_frame_+1,3pass_p0/48867/ccs_translation_frame_+1,3pass_p0/50554/ccs_translation_frame_+1,3pass_p0/58117/ccs_translation_frame_+1,3pass_p0/63889/ccs_translation_frame_+1,3pass_p0/70946/ccs_translation_frame_+1,3pass_p0/73523/ccs_translation_frame_+1,3pass_p0/73826/ccs_translation_frame_+1,3pass_p0/77423/ccs_translation_frame_+1,3pass_p0/78377/ccs_translation_frame_+1,3pass_p0/79050/ccs_translation_frame_+1,3pass_p0/81027/ccs_translation_frame_+1,3pass_p0/83869/ccs_translation_frame_+1,3pass_p0/83905/ccs_translation_frame_+1,3pass_p0/84747/ccs_translation_frame_+1,3pass_p0/85743/ccs_translation_frame_+1,3pass_p0/88118/ccs_translation_frame_+1,3pass_p0/94266/ccs_translation_frame_+1,3pass_p0/94405/ccs_translation_frame_+1,3pass_p0/95493/ccs_translation_frame_+1,3pass_p0/98669/ccs_translation_frame_+1,3pass_p0/101153/ccs_translation_frame_+1,3pass_p0/108728/ccs_translation_frame_+1,3pass_p0/112772/ccs_translation_frame_+1,3pass_p0/115579/ccs_translation_frame_+1,3pass_p0/121212/ccs_translation_frame_+1,3pass_p0/122336/ccs_translation_frame_+1,3pass_p0/123897/ccs_translation_frame_+1,3pass_p0/129504/ccs_translation_frame_+1,3pass_p0/134645/ccs_translation_frame_+1,3pass_p0/135564/ccs_translation_frame_+1,3pass_p0/140344/ccs_translation_frame_+1,3pass_p0/147327/ccs_translation_frame_+1,3pass_p0/156797/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA PAT(2)
+Matched!
+
+3pass_p0/17981/ccs_translation_frame_+1
+S :KWG*CSRECY*W**GEPECVQGYW*HWQQWQQMWYHR*HCHHQD*CGVH*GCRQRSYLLWTIPPSTRQEW
+No Match
+
+3pass_p0/18573/ccs_translation_frame_+1
+S :KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQITQAFTADSDTTLLSAESSNISTSGW
+No Match
+
+3pass_p0/24185/ccs_translation_frame_+1,3pass_p0/50901/ccs_translation_frame_+1,3pass_p0/119448/ccs_translation_frame_+1,3pass_p0/153493/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA PAT(5) SNP(6)
+Matched!
+
+3pass_p0/24266/ccs_translation_frame_+1,3pass_p0/82307/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                           NNGK PAT(5)
+No Match
+
+3pass_p0/24951/ccs_translation_frame_+1
+S :KWVMP*RVLLALLVVMN*VRRWCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLTGMA
+No Match
+
+3pass_p0/24974/ccs_translation_frame_+1
+S :KWVMQ*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+No Match
+
+3pass_p0/25071/ccs_translation_frame_+1,3pass_p0/95499/ccs_translation_frame_+1,3pass_p0/139151/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINTTGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTIN PAT(2)
+M*:                                                                DTINTTGMA PAT(3)
+Matched!
+
+3pass_p0/26035/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDETE*EGVWQGRRQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+No Match
+
+3pass_p0/28042/ccs_translation_frame_+1
+S :KWGNA*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/28196/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTPLSAESSNISTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4) SNP(60)
+Matched!
+
+3pass_p0/28670/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSG PAT(5) SNP(6)
+No Match
+
+3pass_p0/28784/ccs_translation_frame_+1
+S :KVG*MQ*RVLLALLVVMKLSKKVCGKGTTSGKPVWG*RHQWQHQQ*WQKSLKHFTAE**YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/30179/ccs_translation_frame_+1,3pass_p0/41139/ccs_translation_frame_+1
+S :KWG*CSRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/31815/ccs_translation_frame_+1,3pass_p0/129973/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTE PAT(2) SNP(48)
+M*:                                 KCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGMA PAT(1)
+Matched!
+
+3pass_p0/32376/ccs_translation_frame_+1,3pass_p0/47641/ccs_translation_frame_+1,3pass_p0/58740/ccs_translation_frame_+1,3pass_p0/76438/ccs_translation_frame_+1,3pass_p0/89433/ccs_translation_frame_+1,3pass_p0/134952/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4)
+Matched!
+
+3pass_p0/33229/ccs_translation_frame_+1
+S :KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*LPPVAAPTMASLVLYSTLTVQRLSHQWTPLPVVLVTPSACRGW
+No Match
+
+3pass_p0/34269/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNVTSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+No Match
+
+3pass_p0/36157/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQTRQGC
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNG PAT(2)
+No Match
+
+3pass_p0/36772/ccs_translation_frame_+1
+S :KWGNASRECYWHY*W**TE*EGVWQGRRQ*WH*EVWYHR*HCHHQD*CGVH*GCSSAVIYYGQYHHQHDRNG
+No Match
+
+3pass_p0/41080/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISDVFTEGTDTLLSVEGNKDTINLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA PAT(2) SNP(48)
+Matched!
+
+3pass_p0/42324/ccs_translation_frame_+1,3pass_p0/127381/ccs_translation_frame_+1
+S :KWVMP*RVLLALLVVMN*VRRCVARAKAVMALRSVVPPIALPPPRLVRCSLRVQTHCFLLRGTKTPSTCRGWR
+No Match
+
+3pass_p0/43179/ccs_translation_frame_+1,3pass_p0/102202/ccs_translation_frame_+1,3pass_p0/102563/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSWM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                           NNGK PAT(5)
+No Match
+
+3pass_p0/43661/ccs_translation_frame_+1,3pass_p0/99780/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA PAT(2) SNP(6)
+Matched!
+
+3pass_p0/44368/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTG***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFT PAT(4)
+No Match
+
+3pass_p0/47109/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDDAEAISSMDTTASGTSNTISLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA PAT(5) SNP(55)
+Matched!
+
+3pass_p0/47957/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGITSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+No Match
+
+3pass_p0/48231/ccs_translation_frame_+1,3pass_p0/123323/ccs_translation_frame_+1,3pass_p0/139668/ccs_translation_frame_+1
+S :KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+No Match
+
+3pass_p0/48276/ccs_translation_frame_+1
+S :KWG*CHRECYWHY*W**TE*EGVWQGRRQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+No Match
+
+3pass_p0/48667/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSG PAT(5) SNP(6)
+No Match
+
+3pass_p0/50522/ccs_translation_frame_+1,3pass_p0/110347/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGMD
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4)
+No Match
+
+3pass_p0/50683/ccs_translation_frame_+1
+S :KWGTTVEAATNGQTVSQKVCGNGTGSSGSNCGKNTTDSTKISAVFTEDAAAQLSTMDNTTINTTGMA
+M*:KWGTTVEAATNGQTVSQKVCGNGTGSSGSNCGKNTTDST PAT(4)
+M*:                                      TKISAVFTEDAAAQLSTMDNTTINTTGMA PAT(1)
+Matched!
+
+3pass_p0/50840/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGERQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGE PAT(2)
+No Match
+
+3pass_p0/54191/ccs_translation_frame_+1,3pass_p0/102184/ccs_translation_frame_+1,3pass_p0/107052/ccs_translation_frame_+1,3pass_p0/113752/ccs_translation_frame_+1,3pass_p0/133895/ccs_translation_frame_+1,3pass_p0/143988/ccs_translation_frame_+1
+S :KWGTTVEAATNGQTVSQKVCGNGTGSSGSNCGKNTTDSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+No Match
+
+3pass_p0/55320/ccs_translation_frame_+1,3pass_p0/149273/ccs_translation_frame_+1
+S :KWVMQ*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/55601/ccs_translation_frame_+1,3pass_p0/77654/ccs_translation_frame_+1
+S :KWGNASRECYWHY*W**TE*EGVWQGRRQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+No Match
+
+3pass_p0/57845/ccs_translation_frame_+1,3pass_p0/81530/ccs_translation_frame_+1
+S :KWGNAVESATALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/58983/ccs_translation_frame_+1
+S :KWGNAVENATNGDRVSQNVCKGTGSTGSSGNKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGMA
+M*:KWGNAVENATNGDKVSQNVCKGTGSTGSSGNKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGMA PAT(1) SNP(14)
+Matched!
+
+3pass_p0/61504/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGQPVWG*RHQWQHQQ*WPKSLKHLPLIVIQHYSLLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSG PAT(5) SNP(6)
+No Match
+
+3pass_p0/62957/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEVQTHCFLLREQRHHQLAGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTE PAT(2)
+M*:                                                   EVFT PAT(2) SNP(54)
+No Match
+
+3pass_p0/63032/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTKQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGST PAT(5) SNP(6)
+M*:                                        STTQ PAT(3) SNP(43)
+No Match
+
+3pass_p0/65604/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKAKAVMALRSVVPPIALPPPKISEVFTEGTDTLLSVEGNKDTINLQGMA
+No Match
+
+3pass_p0/65630/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKVPLVATSVGLTPPVAAPTMASLVLYSTLTV*RLSHQWTPLPVVLVTPSACRGW
+M*:KWGNAIESATGTTSGDELSKKVCGK PAT(5)
+No Match
+
+3pass_p0/67625/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFAADSDTTLLSAESSNISTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4) SNP(53)
+Matched!
+
+3pass_p0/70045/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGGTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+No Match
+
+3pass_p0/71335/ccs_translation_frame_+1
+S :KWGNASRECYWHY*VVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/71510/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINYDRDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTIN PAT(2)
+M*:                                                                   NKD PAT(2) SNP(69)
+No Match
+
+3pass_p0/72888/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNIQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNI PAT(4)
+M*:                                                                  NLQ PAT(2) SNP(68)
+No Match
+
+3pass_p0/72921/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNAT PAT(5)
+No Match
+
+3pass_p0/73507/ccs_translation_frame_+1,3pass_p0/88747/ccs_translation_frame_+1
+S :KWGNAIESATGTTNGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA PAT(5) SNP(14)
+Matched!
+
+3pass_p0/76035/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+No Match
+
+3pass_p0/76063/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTA***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTA PAT(4)
+No Match
+
+3pass_p0/79952/ccs_translation_frame_+1,3pass_p0/108029/ccs_translation_frame_+1
+S :KWGTTVEAATNGQTVSQKVCGNGTGSSGSNCGKNTTDSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+M*:KWGTTVEAATNGQTVSQKVCGNGTGSSGSNCGKNTTDSTNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4)
+Matched!
+
+3pass_p0/81266/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVKRHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGV PAT(5) SNP(6)
+No Match
+
+3pass_p0/82121/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSWDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTS PAT(4)
+No Match
+
+3pass_p0/85417/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCG PAT(5) SNP(6)
+M*:                            SGNKCGTT PAT(1) SNP(32,35)
+No Match
+
+3pass_p0/85484/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGYH*WQPVWG*RHQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKG PAT(5)
+No Match
+
+3pass_p0/85551/ccs_translation_frame_+1
+S :EVG*CSRECYWHY*W**TE*EGVWPRVPLVATSVGLTPPVAAPTIMAKSPQGILPLIVIQHYSLLESSNISTSGDG
+No Match
+
+3pass_p0/86842/ccs_translation_frame_+1
+S :KWVMQ*RCTGILV**TE*EGVWQGTTSGNQCGLTPPVQHNNNAKSLKHLR***YNTTSAESSNISTSGM
+No Match
+
+3pass_p0/88622/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTYGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTADSDTTLLSAESSNISTSG PAT(4) SNP(71)
+No Match
+
+3pass_p0/88663/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/88782/ccs_translation_frame_+1
+S :KWGNAVESATGTTRW**TE*EGVWQGYH*WQPVWGLTPPVAAPTIMAKITQAFTADSDTTLLSAESSNISTSGDG
+No Match
+
+3pass_p0/89737/ccs_translation_frame_+1,3pass_p0/130365/ccs_translation_frame_+1
+S :KWGNAVENATNGDKVSQNVCKGTGSTGSSGNKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGNG
+No Match
+
+3pass_p0/91350/ccs_translation_frame_+1,3pass_p0/140589/ccs_translation_frame_+1
+S :KWGNAIESATGTTKW**TE*EGVWQGYH*WQPVWG*RHQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+No Match
+
+3pass_p0/96610/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCWQGYH*WQPVWG*RHQCSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+No Match
+
+3pass_p0/97080/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKEGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/97761/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGQ*WH*EVWYHR*HCHHQD*CGVH*GYRHTAFC*GEQRHHQLAGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGEG PAT(2)
+No Match
+
+3pass_p0/98731/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTA***YNTTLC*E*QHQYVGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAFTA PAT(4)
+No Match
+
+3pass_p0/103375/ccs_translation_frame_+1
+S :KWGNAVESAYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSKHLPLIVIQHLPLC*E*QHQYVGDG
+No Match
+
+3pass_p0/103744/ccs_translation_frame_+1
+S :KWGNAVEVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/104145/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGNTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(41)
+M*:                                         TNNNGKITQAFTADSDTTLLSAESSNISTSGM PAT(4)
+Matched!
+
+3pass_p0/110959/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTN PAT(5) SNP(6)
+No Match
+
+3pass_p0/110979/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINTDRDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTIN PAT(2)
+M*:                                                                DTINT PAT(3)
+M*:                                                                   NKD PAT(2) SNP(69)
+No Match
+
+3pass_p0/116325/ccs_translation_frame_+1
+S :KWVMP*RVLLALLMVMN*VRRCVARVPLVATSVGLTPPVAAPTMASLVLYSTLTVQRLSHQWTPLPVVLVTPSACRGW
+No Match
+
+3pass_p0/117456/ccs_translation_frame_+1
+S :KWVLL*KLLLMVKQ*ARRCVAMVLVAVVATVVRTLLTAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/118814/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGST PAT(5) SNP(6)
+M*:                                     TNGSST PAT(3) SNP(39,42)
+M*:                                         TKISA PAT(1) SNP(43,45)
+No Match
+
+3pass_p0/118829/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVVWQGYH*WQPVWG*RHQWQHQQ*WQNSLKHLPLIVIQHYSLLRVATSVRRGW
+No Match
+
+3pass_p0/119182/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNAT PAT(5) SNP(6)
+No Match
+
+3pass_p0/120568/ccs_translation_frame_+1
+S :KWCNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+No Match
+
+3pass_p0/122181/ccs_translation_frame_+1
+S :KWGTDCRELLLMVQYR*ARSVWQWVLVALAAVQHVVHDTLLHSTKISAVFTEDAAAQLSTMDNTTINTTGMA
+M*:KWGT PAT(4)
+No Match
+
+3pass_p0/123377/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITPSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKIT PAT(4)
+No Match
+
+3pass_p0/125550/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGM PAT(2)
+Matched!
+
+3pass_p0/125937/ccs_translation_frame_+1
+S :KWGNAVENATNGDKVSQNVCKGTGSTGTVATNVVPPIALPPPRLVRCSLRMQQRSYLLWTIPPSTRQGW
+M*:KWGNAVENATNGDKVSQNVCKGTGSTG PAT(1)
+No Match
+
+3pass_p0/126611/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFNR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGKITQAF PAT(4)
+M*:                                                   FN PAT(5)
+No Match
+
+3pass_p0/127925/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDETE*EGVWQG*PLVATSVGLTPPVAAPNNNGKITQAFTADSDTNTTLC*E*QTSVRRGW
+No Match
+
+3pass_p0/129553/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKNHSSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+M*:                                        STNNNGK PAT(4)
+No Match
+
+3pass_p0/131707/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATS PAT(5) SNP(6)
+No Match
+
+3pass_p0/132025/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCG*RHLRDSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCG PAT(5) SNP(6)
+No Match
+
+3pass_p0/136039/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDRCRGYLINGHHCQWY**HHQLAGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTD PAT(5)
+No Match
+
+3pass_p0/136066/ccs_translation_frame_+1
+S :KWVMPVESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA
+No Match
+
+3pass_p0/136792/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNAHQWQHQQ*WQNHSSIYR***YNTTLWLRVATSVRRGW
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNA PAT(5) SNP(6)
+No Match
+
+3pass_p0/138441/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNTTSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSKHHQLAGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTS PAT(5) SNP(37)
+No Match
+
+3pass_p0/139436/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNMAKSLKHLPLIVIQHYSLLRVATSVTSGM
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNN PAT(5) SNP(6)
+No Match
+
+3pass_p0/140709/ccs_translation_frame_+1,3pass_p0/146704/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTDEATLLSAAGDTINTTGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFT PAT(2)
+M*:                                            KISAVFTDEATLLSAAGDTINTTGMA PAT(3) SNP(48)
+Matched!
+
+3pass_p0/140742/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSQEGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/144508/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVWWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+No Match
+
+3pass_p0/148600/ccs_translation_frame_+1
+S :KVG*CSRECYWHY*W**N*VRRCVARVPLVANQCGVNAHQWQHQQ*WQKSLKHFTADSDTTLLSAESSNISTSGMA
+No Match
+
+3pass_p0/149272/ccs_translation_frame_+1
+S :KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNTTSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA PAT(5) SNP(37)
+Matched!
+
+3pass_p0/152517/ccs_translation_frame_+1
+S :KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATKWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+M*:KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNAT PAT(5) SNP(6)
+No Match
+
+PATTERN   # SEQUENCES
+54        262
+2         45
+5         30
+1         16
+23        5
+21        2
+4         2
+41        1
+
+Total number of sequences (with no match) : 94
+
+Seq 1: 3pass_p0/679/ccs_translation_frame_+1,3pass_p0/4928/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+
+Seq 2: 3pass_p0/1249/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTAPPRLVRCSLRVQTHCFLLRGTKTPSTRQGW
+
+Seq 3: 3pass_p0/3098/ccs_translation_frame_+1
+KWGNAVESATALLVVMN*VRRCVARVH*WHQCGVTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+
+Seq 4: 3pass_p0/6047/ccs_translation_frame_+1,3pass_p0/7384/ccs_translation_frame_+1,3pass_p0/58468/ccs_translation_frame_+1,3pass_p0/97091/ccs_translation_frame_+1,3pass_p0/120392/ccs_translation_frame_+1,3pass_p0/122023/ccs_translation_frame_+1,3pass_p0/138749/ccs_translation_frame_+1,3pass_p0/143627/ccs_translation_frame_+1
+KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 5: 3pass_p0/6317/ccs_translation_frame_+1
+KWVMQ*RVLLHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGM
+
+Seq 6: 3pass_p0/7436/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKEGVWQGYH*WQPVWG*RHQWQHQQWKA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+
+Seq 7: 3pass_p0/8240/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 8: 3pass_p0/8876/ccs_translation_frame_+1,3pass_p0/119157/ccs_translation_frame_+1,3pass_p0/120311/ccs_translation_frame_+1,3pass_p0/149855/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGW
+
+Seq 9: 3pass_p0/10621/ccs_translation_frame_+1,3pass_p0/87814/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGKNSGDTNGSSTTQHKISAVFTEDAAAQLSTMDNTTINTTGMA
+
+Seq 10: 3pass_p0/11671/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGTTSGKPVWG*RHQWQHQTMASLVLYSTLTVQRLSHQWTPLPVVLVTPSACRGW
+
+Seq 11: 3pass_p0/14984/ccs_translation_frame_+1
+KWGNAVESATGTY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 12: 3pass_p0/15880/ccs_translation_frame_+1
+KWVMQ*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPT*WQNHSSITADSDTTLLSAESSNISTSGW
+
+Seq 13: 3pass_p0/16469/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 14: 3pass_p0/17981/ccs_translation_frame_+1
+KWG*CSRECY*W**GEPECVQGYW*HWQQWQQMWYHR*HCHHQD*CGVH*GCRQRSYLLWTIPPSTRQEW
+
+Seq 15: 3pass_p0/18573/ccs_translation_frame_+1
+KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQITQAFTADSDTTLLSAESSNISTSGW
+
+Seq 16: 3pass_p0/24266/ccs_translation_frame_+1,3pass_p0/82307/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGDG
+
+Seq 17: 3pass_p0/24951/ccs_translation_frame_+1
+KWVMP*RVLLALLVVMN*VRRWCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLTGMA
+
+Seq 18: 3pass_p0/24974/ccs_translation_frame_+1
+KWVMQ*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+
+Seq 19: 3pass_p0/26035/ccs_translation_frame_+1
+KWGNAIESATGTTSGDETE*EGVWQGRRQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+
+Seq 20: 3pass_p0/28042/ccs_translation_frame_+1
+KWGNA*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 21: 3pass_p0/28670/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 22: 3pass_p0/28784/ccs_translation_frame_+1
+KVG*MQ*RVLLALLVVMKLSKKVCGKGTTSGKPVWG*RHQWQHQQ*WQKSLKHFTAE**YNTTLC*E*QHQYVGDG
+
+Seq 23: 3pass_p0/30179/ccs_translation_frame_+1,3pass_p0/41139/ccs_translation_frame_+1
+KWG*CSRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 24: 3pass_p0/33229/ccs_translation_frame_+1
+KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*LPPVAAPTMASLVLYSTLTVQRLSHQWTPLPVVLVTPSACRGW
+
+Seq 25: 3pass_p0/34269/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNVTSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+
+Seq 26: 3pass_p0/36157/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGEGSNGH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQTRQGC
+
+Seq 27: 3pass_p0/36772/ccs_translation_frame_+1
+KWGNASRECYWHY*W**TE*EGVWQGRRQ*WH*EVWYHR*HCHHQD*CGVH*GCSSAVIYYGQYHHQHDRNG
+
+Seq 28: 3pass_p0/42324/ccs_translation_frame_+1,3pass_p0/127381/ccs_translation_frame_+1
+KWVMP*RVLLALLVVMN*VRRCVARAKAVMALRSVVPPIALPPPRLVRCSLRVQTHCFLLRGTKTPSTCRGWR
+
+Seq 29: 3pass_p0/43179/ccs_translation_frame_+1,3pass_p0/102202/ccs_translation_frame_+1,3pass_p0/102563/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSWM
+
+Seq 30: 3pass_p0/44368/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTG***YNTTLC*E*QHQYVGDG
+
+Seq 31: 3pass_p0/47957/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGITSGNQCGVNATSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+
+Seq 32: 3pass_p0/48231/ccs_translation_frame_+1,3pass_p0/123323/ccs_translation_frame_+1,3pass_p0/139668/ccs_translation_frame_+1
+KWGNASRECYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+
+Seq 33: 3pass_p0/48276/ccs_translation_frame_+1
+KWG*CHRECYWHY*W**TE*EGVWQGRRQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+
+Seq 34: 3pass_p0/48667/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 35: 3pass_p0/50522/ccs_translation_frame_+1,3pass_p0/110347/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGMD
+
+Seq 36: 3pass_p0/50840/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGERQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+
+Seq 37: 3pass_p0/54191/ccs_translation_frame_+1,3pass_p0/102184/ccs_translation_frame_+1,3pass_p0/107052/ccs_translation_frame_+1,3pass_p0/113752/ccs_translation_frame_+1,3pass_p0/133895/ccs_translation_frame_+1,3pass_p0/143988/ccs_translation_frame_+1
+KWGTTVEAATNGQTVSQKVCGNGTGSSGSNCGKNTTDSTNNGKLSTVFNTDGAEAISSMDTTASGTSNTISLQGMA
+
+Seq 38: 3pass_p0/55320/ccs_translation_frame_+1,3pass_p0/149273/ccs_translation_frame_+1
+KWVMQ*RVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 39: 3pass_p0/55601/ccs_translation_frame_+1,3pass_p0/77654/ccs_translation_frame_+1
+KWGNASRECYWHY*W**TE*EGVWQGRRQ*WH*EVWYHR*HCHHQD**GVH*GYRHTAFC*GEQRHHQLAGDG
+
+Seq 40: 3pass_p0/57845/ccs_translation_frame_+1,3pass_p0/81530/ccs_translation_frame_+1
+KWGNAVESATALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 41: 3pass_p0/61504/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGQPVWG*RHQWQHQQ*WPKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 42: 3pass_p0/62957/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEVQTHCFLLREQRHHQLAGMA
+
+Seq 43: 3pass_p0/63032/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTKQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 44: 3pass_p0/65604/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKAKAVMALRSVVPPIALPPPKISEVFTEGTDTLLSVEGNKDTINLQGMA
+
+Seq 45: 3pass_p0/65630/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKVPLVATSVGLTPPVAAPTMASLVLYSTLTV*RLSHQWTPLPVVLVTPSACRGW
+
+Seq 46: 3pass_p0/70045/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGGTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+
+Seq 47: 3pass_p0/71335/ccs_translation_frame_+1
+KWGNASRECYWHY*VVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 48: 3pass_p0/71510/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINYDRDG
+
+Seq 49: 3pass_p0/72888/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNIQYVGDG
+
+Seq 50: 3pass_p0/72921/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+
+Seq 51: 3pass_p0/76035/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRDG
+
+Seq 52: 3pass_p0/76063/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTA***YNTTLC*E*QHQYVGDG
+
+Seq 53: 3pass_p0/81266/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVKRHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGM
+
+Seq 54: 3pass_p0/82121/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSWDG
+
+Seq 55: 3pass_p0/85417/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 56: 3pass_p0/85484/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGYH*WQPVWG*RHQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+
+Seq 57: 3pass_p0/85551/ccs_translation_frame_+1
+EVG*CSRECYWHY*W**TE*EGVWPRVPLVATSVGLTPPVAAPTIMAKSPQGILPLIVIQHYSLLESSNISTSGDG
+
+Seq 58: 3pass_p0/86842/ccs_translation_frame_+1
+KWVMQ*RCTGILV**TE*EGVWQGTTSGNQCGLTPPVQHNNNAKSLKHLR***YNTTSAESSNISTSGM
+
+Seq 59: 3pass_p0/88622/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTYGDG
+
+Seq 60: 3pass_p0/88663/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 61: 3pass_p0/88782/ccs_translation_frame_+1
+KWGNAVESATGTTRW**TE*EGVWQGYH*WQPVWGLTPPVAAPTIMAKITQAFTADSDTTLLSAESSNISTSGDG
+
+Seq 62: 3pass_p0/89737/ccs_translation_frame_+1,3pass_p0/130365/ccs_translation_frame_+1
+KWGNAVENATNGDKVSQNVCKGTGSTGSSGNKCGTTDSTATTKISAVFTEDAAAQLSTMDNTTINTTGNG
+
+Seq 63: 3pass_p0/91350/ccs_translation_frame_+1,3pass_p0/140589/ccs_translation_frame_+1
+KWGNAIESATGTTKW**TE*EGVWQGYH*WQPVWG*RHQWQHQQWQA*YCIQH*RCRGYLINGHHCQWY**HHQLAGDG
+
+Seq 64: 3pass_p0/96610/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCWQGYH*WQPVWG*RHQCSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+
+Seq 65: 3pass_p0/97080/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKEGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 66: 3pass_p0/97761/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGEGQ*WH*EVWYHR*HCHHQD*CGVH*GYRHTAFC*GEQRHHQLAGDG
+
+Seq 67: 3pass_p0/98731/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTA***YNTTLC*E*QHQYVGM
+
+Seq 68: 3pass_p0/103375/ccs_translation_frame_+1
+KWGNAVESAYWHY*W**TE*EGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSKHLPLIVIQHLPLC*E*QHQYVGDG
+
+Seq 69: 3pass_p0/103744/ccs_translation_frame_+1
+KWGNAVEVLLALLVVMN*VRRCVARVPLVATSVGLTPPVAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 70: 3pass_p0/110959/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 71: 3pass_p0/110979/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINTDRDG
+
+Seq 72: 3pass_p0/116325/ccs_translation_frame_+1
+KWVMP*RVLLALLMVMN*VRRCVARVPLVATSVGLTPPVAAPTMASLVLYSTLTVQRLSHQWTPLPVVLVTPSACRGW
+
+Seq 73: 3pass_p0/117456/ccs_translation_frame_+1
+KWVLL*KLLLMVKQ*ARRCVAMVLVAVVATVVRTLLTAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 74: 3pass_p0/118814/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 75: 3pass_p0/118829/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVVWQGYH*WQPVWG*RHQWQHQQ*WQNSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 76: 3pass_p0/119182/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 77: 3pass_p0/120568/ccs_translation_frame_+1
+KWCNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+
+Seq 78: 3pass_p0/122181/ccs_translation_frame_+1
+KWGTDCRELLLMVQYR*ARSVWQWVLVALAAVQHVVHDTLLHSTKISAVFTEDAAAQLSTMDNTTINTTGMA
+
+Seq 79: 3pass_p0/123377/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITPSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 80: 3pass_p0/125937/ccs_translation_frame_+1
+KWGNAVENATNGDKVSQNVCKGTGSTGTVATNVVPPIALPPPRLVRCSLRMQQRSYLLWTIPPSTRQGW
+
+Seq 81: 3pass_p0/126611/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKITQAFNR***YNTTLC*E*QHQYVGDG
+
+Seq 82: 3pass_p0/127925/ccs_translation_frame_+1
+KWGNAVESATGTTSGDETE*EGVWQG*PLVATSVGLTPPVAAPNNNGKITQAFTADSDTNTTLC*E*QTSVRRGW
+
+Seq 83: 3pass_p0/129553/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNNGKNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 84: 3pass_p0/131707/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSAAPTIMAKSLKHLPLIVIQHYSLLRVATSVRRGW
+
+Seq 85: 3pass_p0/132025/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCG*RHLRDSTNNNGKITQAFTADSDTTLLSAESSNISTSGM
+
+Seq 86: 3pass_p0/136039/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNGKLSTVFNTDRCRGYLINGHHCQWY**HHQLAGDG
+
+Seq 87: 3pass_p0/136066/ccs_translation_frame_+1
+KWVMPVESATGTTSGDELSKKVCGKGEGSNGTKKCGTTDSTATTKISEVFTEGTDTLLSVEGNKDTINLQGMA
+
+Seq 88: 3pass_p0/136792/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNAHQWQHQQ*WQNHSSIYR***YNTTLWLRVATSVRRGW
+
+Seq 89: 3pass_p0/138441/ccs_translation_frame_+1
+KWGNAIESATGTTSGDELSKKVCGKGTTSGNQCGVNTTSGSTNNGKLSTVFNTDGAEAISSMDTTASGTSKHHQLAGDG
+
+Seq 90: 3pass_p0/139436/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATSGSTNNMAKSLKHLPLIVIQHYSLLRVATSVTSGM
+
+Seq 91: 3pass_p0/140742/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSQEGVWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 92: 3pass_p0/144508/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVWWQGYH*WQPVWG*RHQWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
+Seq 93: 3pass_p0/148600/ccs_translation_frame_+1
+KVG*CSRECYWHY*W**N*VRRCVARVPLVANQCGVNAHQWQHQQ*WQKSLKHFTADSDTTLLSAESSNISTSGMA
+
+Seq 94: 3pass_p0/152517/ccs_translation_frame_+1
+KWGNAVESATGTTSGDELSKKVCGKGTTSGNQCGVNATKWQHQQ*WQNHSSIYR***YNTTLC*E*QHQYVGDG
+
