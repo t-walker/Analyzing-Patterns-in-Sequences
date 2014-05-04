@@ -1,7 +1,5 @@
 *.zip
-*.fasta
-*.fa
 *.txt
+*.pyc
 Misc
 Results
-seq_identifier
