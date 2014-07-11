@@ -1,0 +1,13 @@
+#! /bin/sh
+
+for file in `ls -a Samples/*.fa`; do
+
+    echo "$file"
+    filWExt=${file:8}
+    filWOExt=${filWExt%\.*}
+
+    python seq_identifier.py -p Allels_Trimv2.fa -s "$filWExt" -d > Results/"$filWOExt"_with_patterns.txt
+
+done
+
+exit 0

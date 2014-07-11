@@ -66,6 +66,12 @@ def main(argv):
   # Step 1: Retrieve allele patterns
   alleleIds, allelePatterns, numPatterns = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", False, "Allele Patterns")
 
+  print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+  print "Pattern Sequences:"
+  for num in range(0, numPatterns):
+    print "PAT(%d): %s | %s" %(num+1, alleleIds[num], allelePatterns[num])
+  print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
   # Step 2: Load sample sequences and identify duplicates
   sampleIds, sampleSequences, totalSequences =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", True, "Sample Sequences")
 
@@ -80,6 +86,7 @@ def main(argv):
   # [total, pattern, []]
   results = {}
   noMatch = []
+  totalNoMatches = 0
   for num in range(0, numSamples):
     numberOfSequences = len(sampleIds[num].split(","))
     if GlobalVars.DEBUG:
@@ -101,6 +108,7 @@ def main(argv):
         results[pattern][0] += numberOfSequences
         results[pattern][1] += [patternMatch]
     else:
+      totalNoMatches += numberOfSequences
       noMatch += [(sampleIds[num], sampleSequences[num])]
 
     if GlobalVars.DEBUG:
@@ -118,7 +126,7 @@ def main(argv):
 
   noMatchLen = len(noMatch)
   if noMatchLen > 0:
-    print "Total number of sequences (with no match) : %d" %(noMatchLen)
+    print "Total number of sequences (with no match) : %d" %(totalNoMatches)
     print
     WriteToFileNoMatches(sampleFile.split('.')[0], noMatch, sampleIds, sampleSequences)
     for index in range(0, noMatchLen):
