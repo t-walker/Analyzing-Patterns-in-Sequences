@@ -127,6 +127,8 @@ def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
         print
 
     for num in range(0, numPatterns):
+      patternMatches = None
+      sampleMatches = None
       # front has match and end has match:
       if F_max_patternMatch != None and E_max_patternMatch != None:
         patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
@@ -143,53 +145,79 @@ def DeterminePattern(sample, sampleNum, allelePatterns, numPatterns):
       else:
         patternMatches, sampleMatches = MidSimilarity(sample, 0, sampleLength-1, allelePatterns[num], num)
       #patternMatches, sampleMatches = MidSimilarity(sample, F_max_sampleMatch.endIndex-1, E_max_sampleMatch.startIndex+1, allelePatterns[num], num)
-
+##      print "num ",num
+##      print "total matches ", len(patternMatches)
       for index in range (0, len(patternMatches)):
-        if patternMatches[index] not in all_patternMatches:
+        isFound = False
+        isDuplicate = False  # if it aligns the same part of the sample
+        for i in range(len(all_patternMatches)):
+          # Checks if the same pattern already exists
+          if patternMatches[index].number == all_patternMatches[i].number and \
+             patternMatches[index].startIndex ==  all_patternMatches[i].startIndex and \
+             patternMatches[index].endIndex == all_patternMatches[i].endIndex:
+            isFound = True
+            break
+          # Checks for patterns aligning on the same region in the sample
+          if sampleMatches[index].startIndex == all_sampleMatches[i].startIndex and \
+             sampleMatches[index].endIndex == all_sampleMatches[i].endIndex:
+            isDuplicate = True
+            all_sampleMatches[i].number = -1  # mark sample as duplicate
+            break
+          elif sampleMatches[index].startIndex <= all_sampleMatches[i].startIndex and \
+               sampleMatches[index].endIndex >= all_sampleMatches[i].endIndex:
+            all_sampleMatches[i].number = -1
+            # repeat to check if other matches also falls within this match
+          elif sampleMatches[index].startIndex >= all_sampleMatches[i].startIndex and \
+               sampleMatches[index].endIndex <= all_sampleMatches[i].endIndex:
+            isDuplicate = True
+            break
+
+        # delete samples and patterns considered 
+        index2 = len(all_sampleMatches) - 1
+        while index2 >= 0:
+          if all_sampleMatches[index2].number == -1:
+            del all_sampleMatches[index2]
+            del all_patternMatches[index2]
+          index2 = index2 - 1
+          if index2 < 0:
+            break
+
+        #if patternMatches[index] not in all_patternMatches:
+        if not isFound and not isDuplicate:
           all_patternMatches.append(patternMatches[index])
           sampleMatches[index].number = sampleNum
           all_sampleMatches.append(sampleMatches[index])
+##      print "all total matches ", len(all_patternMatches)
 
-    # remove patterns with the same length hitting on same part of the sample
-    for outer_index in range(0, len(all_sampleMatches)):
-      isDuplicate = False
-      #if all_sampleMatches[outer_index].startIndex == -1:
-      #  continue
-      if all_sampleMatches[outer_index].number == -1:
-        continue
-      for inner_index in range(0, len(all_sampleMatches)):
-        if inner_index == outer_index:
-          continue
-        if all_sampleMatches[outer_index].startIndex == all_sampleMatches[inner_index].startIndex and \
-           all_sampleMatches[outer_index].endIndex == all_sampleMatches[inner_index].endIndex:
-          isDuplicate = True
-          all_sampleMatches[inner_index].number = -1
-        # this remove a pattern that is within another pattern that is bigger
-        elif all_sampleMatches[outer_index].startIndex <= all_sampleMatches[inner_index].startIndex and \
-             all_sampleMatches[outer_index].endIndex >= all_sampleMatches[inner_index].endIndex:
-          all_sampleMatches[inner_index].number = -1
-      if isDuplicate:
-          all_sampleMatches[outer_index].number = -1
+##    # remove patterns with the same length hitting on same part of the sample
+##    for outer_index in range(0, len(all_sampleMatches)):
+##      isDuplicate = False
+##      #if all_sampleMatches[outer_index].startIndex == -1:
+##      #  continue
+##      if all_sampleMatches[outer_index].number == -1:
+##        continue
+##      for inner_index in range(0, len(all_sampleMatches)):
+##        if inner_index == outer_index:
+##          continue
+##        if all_sampleMatches[outer_index].startIndex == all_sampleMatches[inner_index].startIndex and \
+##           all_sampleMatches[outer_index].endIndex == all_sampleMatches[inner_index].endIndex:
+##          isDuplicate = True
+##          all_sampleMatches[inner_index].number = -1
+##        # this remove a pattern that is within another pattern that is bigger
+##        elif all_sampleMatches[outer_index].startIndex <= all_sampleMatches[inner_index].startIndex and \
+##             all_sampleMatches[outer_index].endIndex >= all_sampleMatches[inner_index].endIndex:
+##          all_sampleMatches[inner_index].number = -1
+##      if isDuplicate:
+##          all_sampleMatches[outer_index].number = -1
 
-    index = len(all_sampleMatches) - 1
-    temp_all_sampleMatches = []
-    temp_all_patternMatches = []
-    while index >= 0:
-      if all_sampleMatches[index].number == -1:
-        del all_sampleMatches[index]
-        del all_patternMatches[index]
-      index = index - 1
-      if index < 0:
-        break
-    #while index >= 0:
-    #    if all_sampleMatches[index].number != -1:
-    #        temp_all_sampleMatches.append(all_sampleMatches[index])
-    #        temp_all_patternMatches.append(all_patternMatches[index])
-    #    index = index - 1
-    #del all_sampleMatches
-    #del all_patternMatches
-    #all_sampleMatches = temp_all_sampleMatches
-    #all_patternMatches = temp_all_patternMatches
+##    index = len(all_sampleMatches) - 1
+##    while index >= 0:
+##      if all_sampleMatches[index].number == -1:
+##        del all_sampleMatches[index]
+##        del all_patternMatches[index]
+##      index = index - 1
+##      if index < 0:
+##        break
 
     hasNoMatch = False
     if len(all_patternMatches) > 0:
@@ -360,8 +388,8 @@ def MidSimilarity(sample, sampleStartIndex, sampleEndIndex, pattern, patternNum)
   patternMatches = []
   sampleMatches = []
 
-  for i in range(3, len(pattern) - 3 - sampleMidStringLen + 1):
-    patternTemp = pattern[i:i+sampleMidStringLen]
+  for i in range(3, len(pattern) - sampleMidStringLen):
+    patternTemp = pattern[i:i+sampleMidStringLen+1]
 
     patternMatch = None
     sampleMatch = None
