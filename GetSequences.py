@@ -9,32 +9,38 @@ Create on January 2, 2014
 from Bio import SeqIO
 
 import GlobalVars
+from AssembleFASTAFiles import WriteToFileStopCodons
 
 
-def GetSequences(fileName="", fileType="fasta", path="", noDuplicates=False, name=""):
+def GetSequences(fileName="", fileType="fasta", path="", isPatterns=False, name=""):
 
   ctr = 0          # counter
   seqIds = []      # allele pattern's id names
   sequences = []   # allele pattern's amino acid sequences
 
-
-  #if GlobalVars.DEBUG:
-    #print "[%s]" %(name)
+  ctr2 = 0         # counter for sequences with stop codons
+  seqsWithCodons = []
 
   # Parse through the file, normally a fasta file
   # and retrive all sequences
   for seq_record in SeqIO.parse(path + fileName, fileType):
 
-    #if GlobalVars.DEBUG:
-      #print "Seq %i:" %(ctr + 1), seq_record.id, str(seq_record.seq)
-
-    # Duplicates accepted
-    if not noDuplicates:
+    # Allele Patterns
+    if isPatterns:
       seqIds.insert(ctr, seq_record.id)
       sequences.insert(ctr, str(seq_record.seq))
 
-    # No Duplicates
+    # Sample Sequences
+    # Don't allow duplicates from input sample and
+    # write to separate file sequences with stop codons
     else:
+
+      if '*' in str(seq_record.seq):
+        seqsWithCodons.insert(ctr2, [seq_record.id, str(seq_record.seq)])
+        ctr += 1
+        ctr2 += 1
+        continue
+
       isAdded = False  # flag variable to check whether sequence has been added
 
       # loop through the parsed sequences to check if current sequence exist
@@ -53,12 +59,9 @@ def GetSequences(fileName="", fileType="fasta", path="", noDuplicates=False, nam
   if GlobalVars.DEBUG:
     print
 
-  #if noDuplicates and GlobalVars.DEBUG:
-    #print "[%s - No Duplicates]" %(name)
+  # Write to file sequences with stop codons
+  if not isPatterns and ctr2 > 0:
+    WriteToFileStopCodons(fileName.split('.')[0], seqsWithCodons)
 
-    #for i in range(0, len(seqIds)):
-      #print "Seq %i:" %(i + 1), seqIds[i], sequences[i]
-    #print
-
-  return seqIds, sequences, ctr
+  return seqIds, sequences, ctr, ctr2
 # end GetSequences()

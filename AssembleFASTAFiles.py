@@ -9,8 +9,8 @@ Create on March 3, 2014
 import os
 
 
-def SplitSequenceByLen (sequence, length=60):
-  return [sequence[i:i+length] for i in range(0, len(sequence), length)]
+def SplitSequenceByLen (seq, length=60):
+  return [seq[i:i+length] for i in range(0, len(seq), length)]
 #end SplitSequenceBylen()
 
 
@@ -24,12 +24,12 @@ def MakeDir(folderName):
 #end MakeDir()
 
 
-def WriteToFile(sampleFileName, pattern, matches, sampleIds, sampleSequences):
+def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs):
   cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampleFileName
+  outputPath = cwd + '/Results/' + sampFileName
   MakeDir(outputPath)
 
-  patternFpDups = open(outputPath + '/P_' + pattern + '_duplicates.fasta', 'w')
+  patternFpDups   = open(outputPath + '/P_' + pattern + '_duplicates.fasta', 'w')
   patternFpNoDups = open(outputPath + '/P_' + pattern + '_no_duplicates.fasta', 'w')
 
   perPatternFp = {}
@@ -39,21 +39,21 @@ def WriteToFile(sampleFileName, pattern, matches, sampleIds, sampleSequences):
 
   count = 0
   for match in matches:
-    sampleIndex = match[0][0].number
-    patternFpNoDups.write('>%s\n' %(sampleIds[sampleIndex]))
-    sequence = '%s' %('\n'.join(SplitSequenceByLen(sampleSequences[sampleIndex])) + '\n')
-    patternFpNoDups.write(sequence)
+    sampIdx = match[0][0].num
+    patternFpNoDups.write('>%s\n' %(sampIds[sampIdx]))
+    seq = '%s' %('\n'.join(SplitSequenceByLen(sampSeqs[sampIdx])) + '\n')
+    patternFpNoDups.write(seq)
 
-    ids = sampleIds[sampleIndex].split(',')
+    ids = sampIds[sampIdx].split(',')
 
     for id in ids:
       patternFpDups.write('>%s\n' %(id))
-      patternFpDups.write(sequence)
+      patternFpDups.write(seq)
       count += 1
       for perPattern in match:
-        perPatternFp[perPattern[1].number].write('>%s\n' %(id))
-        sequence = '%s' %('\n'.join(SplitSequenceByLen(sampleSequences[sampleIndex][perPattern[0].startIndex:perPattern[0].endIndex])) + '\n')
-        perPatternFp[perPattern[1].number].write(sequence)
+        perPatternFp[perPattern[1].num].write('>%s\n' %(id))
+        sequence = '%s' %('\n'.join(SplitSequenceByLen(sampSeqs[sampIdx][perPattern[0].startIndex:perPattern[0].endIndex])) + '\n')
+        perPatternFp[perPattern[1].num].write(sequence)
 
   for key in perPatternFp.keys():
     perPatternFp[key].close()
@@ -63,9 +63,9 @@ def WriteToFile(sampleFileName, pattern, matches, sampleIds, sampleSequences):
 #end WriteToFile()
 
 
-def WriteToFileNoMatches(sampleFileName, noMatches, sampleIds, sampleSequences):
+def WriteToFileNoMatches(sampFileName, noMatches, sampIds, sampSeqs):
   cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampleFileName
+  outputPath = cwd + '/Results/' + sampFileName
   MakeDir(outputPath)
 
   noMatchesFp = open(outputPath + '/No_matches.fasta', 'w')
@@ -75,5 +75,21 @@ def WriteToFileNoMatches(sampleFileName, noMatches, sampleIds, sampleSequences):
     noMatchesFp.write('%s' %('\n'.join(SplitSequenceByLen(noMatch[1])) + '\n'))
 
   noMatchesFp.close()
+
+#end WriteToFileNoMatches()
+
+
+def WriteToFileStopCodons(sampFileName, matches):
+  cwd = os.getcwd()
+  outputPath = cwd + '/Results/' + sampFileName
+  MakeDir(outputPath)
+
+  matchesFp = open(outputPath + '/With_stop_codons.fasta', 'w')
+
+  for match in matches:
+    matchesFp.write('>%s\n' %(match[0]))
+    matchesFp.write('%s' %('\n'.join(SplitSequenceByLen(match[1])) + '\n'))
+
+  matchesFp.close()
 
 #end WriteToFileNoMatches()

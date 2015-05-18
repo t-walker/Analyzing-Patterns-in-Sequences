@@ -8,14 +8,14 @@ class Pattern:
   def __init__(self, number=-1, startIndex=-1, endIndex=-1):
     self.startIndex = startIndex
     self.endIndex = endIndex
-    self.number = number
+    self.num = number
     self.size = (endIndex - startIndex)
 
 class Sample:
   def __init__(self, startIndex=-1, endIndex=-1, number=None):
     self.startIndex = startIndex
     self.endIndex = endIndex
-    self.number = number
+    self.num = number
     self.snippets = []
     self.size = (endIndex - startIndex)
 
