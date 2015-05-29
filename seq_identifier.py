@@ -392,7 +392,7 @@ def main(argv):
 
   if htmlToPdf:
     resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\"><em>" + str(totalNoMatch) + \
-                   "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ gap length >= " + str(maxGap) + "</em></td></tr>"
+                   "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ gap length > " + str(maxGap) + "</em></td></tr>"
     resultTable += "</table>"
 
 
