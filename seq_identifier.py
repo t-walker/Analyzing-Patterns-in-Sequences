@@ -352,7 +352,7 @@ def main(argv):
                      "</td><td style=\"vertical-align:middle\">" + str(key) + " " + sResultTab + "</td></tr>"
 
   if htmlToPdf:
-    compute = totalSeqs - totalSeqsStCodons
+    compute = totalSeqs - totalSeqsStCodons - totalNoMatch
     resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\"><em>" + str(totalSeq) + \
                    "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ duplicates - Seq w/ stop codons - Seq (no match) = " + str(totalSeqs) + " - " + str(totalSeqsStCodons) + " - " + str(totalNoMatch) + " = " + str(compute) + "</em></td></tr>"
     resultTable += "</table>"
@@ -391,7 +391,6 @@ def main(argv):
                      "</td><td style=\"vertical-align:middle\">" + str(key) + " " + sResultTab + "</td></tr>"
 
   if htmlToPdf:
-    compute = totalSeqs - totalSeqsStCodons
     resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\"><em>" + str(totalNoMatch) + \
                    "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ gap length >= " + str(maxGap) + "</em></td></tr>"
     resultTable += "</table>"
