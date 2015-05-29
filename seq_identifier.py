@@ -207,6 +207,7 @@ def main(argv):
   results_ = {}
   minLen = 4        # minimum length of pattern match
   minGap = 0        # minimum gap 1 means don't search for pattern with gap length of 1
+  maxGap = 4        # anything over maxGap is considered a no match
   htmlToPdf = True  # set to True if you want pdf output file
 
   # Step 1: Retrieve allele patterns
@@ -300,15 +301,36 @@ def main(argv):
   sortedKeys = sorted(results, key=results.get, reverse=True)
   print "%s\t%s" %("# SEQ", "PATTERN")
 
+  # Printing GOOD MATCH table
   if htmlToPdf:
     resultTable  = "<div><pdf:nextpage /></div>"
+    resultTable += "<span class=\"TEXT\"><center>SEQUENCES CONSIDERED A <strong>MATCH</strong></center></span>"
     resultTable += "<table width=\"720px\" border=\"1px\" cellpadding=\"2px\" class=\"TEXT\">"
     resultTable += "<tr><td width=\"80px\" valign=\"bottom\" height=\"15px\"><strong># OF SEQ</strong></td><td valign=\"bottom\"><strong>PATTERN</strong></td></tr>"
 
   totalSeq = 0
+  noMatchKeys = []
+  totalNoMatch = 0
+  print "SEQUENCES CONSIDERED A MATCH"
   for key in sortedKeys:
+
+    # Checks that gap lengths are <= maxGap
+    tempList = key.split("/")
+    noMatch = False
+    for t in tempList:
+      if ("gap" in t) and (int(t[:-3]) > maxGap):
+        totalNoMatch += results[key]
+        noMatchKeys.append(key)
+        noMatch = True
+        break
+    if noMatch:
+      continue
+
+    # Print out data for result table for GOOD MATCH
     totalSeq += results[key]
     print "%4d\t%s" %(results[key], key)
+
+
 
     if htmlToPdf:
       sResultTab = "<table cellpadding=\"0px\" width=\"640px\">"
@@ -332,8 +354,48 @@ def main(argv):
   if htmlToPdf:
     compute = totalSeqs - totalSeqsStCodons
     resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\"><em>" + str(totalSeq) + \
-                   "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ duplicates - Seq w/ stop codons = " + str(totalSeqs) + " - " + str(totalSeqsStCodons) + " = " + str(compute) + "</em></td></tr>"
-    resultTable += "</table></span>"
+                   "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ duplicates - Seq w/ stop codons - Seq (no match) = " + str(totalSeqs) + " - " + str(totalSeqsStCodons) + " - " + str(totalNoMatch) + " = " + str(compute) + "</em></td></tr>"
+    resultTable += "</table>"
+
+
+  # Printing NO MATCH table
+  if htmlToPdf:
+    resultTable += "<div><pdf:nextpage /></div>"
+    resultTable += "<span class=\"TEXT\"><center>SEQUENCES CONSIDERED A <strong>NO MATCH</strong></center></span>"
+    resultTable += "<table width=\"720px\" border=\"1px\" cellpadding=\"2px\" class=\"TEXT\">"
+    resultTable += "<tr><td width=\"80px\" valign=\"bottom\" height=\"15px\"><strong># OF SEQ</strong></td><td valign=\"bottom\"><strong>PATTERN</strong></td></tr>"
+
+  print "SEQUENCES CONSIDERED A NO MATCH"
+  for key in noMatchKeys:
+
+    # Print out data for result table for NO MATCH
+    print "%4d\t%s" %(results[key], key)
+
+    if htmlToPdf:
+      sResultTab = "<table cellpadding=\"0px\" width=\"640px\">"
+    subResults = sorted(results_[key], reverse=True)
+    for sResult in subResults:
+      print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
+
+      if htmlToPdf:
+        sampHTML = ""
+        for letter in sampleSequences[sResult[1]]:
+          sampHTML += "<span class=\"" + letter + "\">" + letter + "</span>"
+
+        sResultTab += "<tr><td class=\"TEXT\" width=\"50px\">" + str(sResult[0]) + \
+                      "</td><td>" + sampHTML + "</td></tr>"
+
+    if htmlToPdf:
+      sResultTab  += "</table>"
+      resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\">" + str(results[key]) + \
+                     "</td><td style=\"vertical-align:middle\">" + str(key) + " " + sResultTab + "</td></tr>"
+
+  if htmlToPdf:
+    compute = totalSeqs - totalSeqsStCodons
+    resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\"><em>" + str(totalNoMatch) + \
+                   "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ gap length >= " + str(maxGap) + "</em></td></tr>"
+    resultTable += "</table>"
+
 
   # Write PDF File
   if htmlToPdf:
