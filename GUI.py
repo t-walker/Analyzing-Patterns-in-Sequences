@@ -2,13 +2,13 @@
 
 # Form implementation generated from reading ui file 'VM.ui'
 #
-# Created: Sun May 31 21:49:05 2015
+# Created: Sun May 31 22:48:51 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
+import os
 from PyQt4 import QtCore, QtGui
-
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -41,9 +41,9 @@ class Ui_MainWindow(object):
         self.donor_line = QtGui.QLineEdit(self.centralwidget)
         self.donor_line.setObjectName(_fromUtf8("donor_line"))
         self.horizontalLayout_2.addWidget(self.donor_line)
-        self.donor_open = QtGui.QToolButton(self.centralwidget)
-        self.donor_open.setObjectName(_fromUtf8("donor_open"))
-        self.horizontalLayout_2.addWidget(self.donor_open)
+        self.open_donorfile = QtGui.QPushButton(self.centralwidget)
+        self.open_donorfile.setObjectName(_fromUtf8("open_donorfile"))
+        self.horizontalLayout_2.addWidget(self.open_donorfile)
         self.horizontalLayout.addLayout(self.horizontalLayout_2)
         self.formLayout.setLayout(0, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
         self.label = QtGui.QLabel(self.centralwidget)
@@ -52,15 +52,6 @@ class Ui_MainWindow(object):
         self.label_2 = QtGui.QLabel(self.centralwidget)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.label_2)
-        self.horizontalLayout_3 = QtGui.QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
-        self.input_line = QtGui.QLineEdit(self.centralwidget)
-        self.input_line.setObjectName(_fromUtf8("input_line"))
-        self.horizontalLayout_3.addWidget(self.input_line)
-        self.input_open = QtGui.QToolButton(self.centralwidget)
-        self.input_open.setObjectName(_fromUtf8("input_open"))
-        self.horizontalLayout_3.addWidget(self.input_open)
-        self.formLayout.setLayout(1, QtGui.QFormLayout.FieldRole, self.horizontalLayout_3)
         spacerItem = QtGui.QSpacerItem(20, 10, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.formLayout.setItem(2, QtGui.QFormLayout.LabelRole, spacerItem)
         self.label_3 = QtGui.QLabel(self.centralwidget)
@@ -71,9 +62,9 @@ class Ui_MainWindow(object):
         self.output_line = QtGui.QLineEdit(self.centralwidget)
         self.output_line.setObjectName(_fromUtf8("output_line"))
         self.horizontalLayout_4.addWidget(self.output_line)
-        self.output_open = QtGui.QToolButton(self.centralwidget)
-        self.output_open.setObjectName(_fromUtf8("output_open"))
-        self.horizontalLayout_4.addWidget(self.output_open)
+        self.open_outputdirectory = QtGui.QPushButton(self.centralwidget)
+        self.open_outputdirectory.setObjectName(_fromUtf8("open_outputdirectory"))
+        self.horizontalLayout_4.addWidget(self.open_outputdirectory)
         self.formLayout.setLayout(3, QtGui.QFormLayout.FieldRole, self.horizontalLayout_4)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.formLayout.setItem(5, QtGui.QFormLayout.LabelRole, spacerItem1)
@@ -90,6 +81,15 @@ class Ui_MainWindow(object):
         self.status = QtGui.QLabel(self.centralwidget)
         self.status.setObjectName(_fromUtf8("status"))
         self.formLayout.setWidget(6, QtGui.QFormLayout.LabelRole, self.status)
+        self.horizontalLayout_3 = QtGui.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+        self.input_line = QtGui.QLineEdit(self.centralwidget)
+        self.input_line.setObjectName(_fromUtf8("input_line"))
+        self.horizontalLayout_3.addWidget(self.input_line)
+        self.open_inputdirectory = QtGui.QPushButton(self.centralwidget)
+        self.open_inputdirectory.setObjectName(_fromUtf8("open_inputdirectory"))
+        self.horizontalLayout_3.addWidget(self.open_inputdirectory)
+        self.formLayout.setLayout(1, QtGui.QFormLayout.FieldRole, self.horizontalLayout_3)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
@@ -100,19 +100,34 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
 
+        #CUSTOM
+        self.open_inputdirectory.clicked.connect(self.input_buttonClicked)
+        self.open_outputdirectory.clicked.connect(self.output_buttonClicked)
+        self.open_donorfile.clicked.connect(self.donor_buttonClicked)
+        #END CUSTOM
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.donor_open.setText(_translate("MainWindow", "...", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "FASTA Pattern Analyzer", None))
+        self.open_donorfile.setText(_translate("MainWindow", "Open...", None))
         self.label.setText(_translate("MainWindow", "Donor Alleles File", None))
         self.label_2.setText(_translate("MainWindow", "Input Alleles Directory", None))
-        self.input_open.setText(_translate("MainWindow", "...", None))
         self.label_3.setText(_translate("MainWindow", "Output Directory", None))
-        self.output_open.setText(_translate("MainWindow", "...", None))
+        self.open_outputdirectory.setText(_translate("MainWindow", "Open...", None))
         self.run.setText(_translate("MainWindow", "Run...", None))
         self.status.setText(_translate("MainWindow", "Waiting for data...", None))
+        self.open_inputdirectory.setText(_translate("MainWindow", "Open...", None))
+
+    def donor_buttonClicked(self):
+        self.donor_line.setText(QtGui.QFileDialog.getOpenFileName())
+
+    def input_buttonClicked(self):
+        self.input_line.setText(QtGui.QFileDialog.getExistingDirectory())
+
+    def output_buttonClicked(self):
+        self.output_line.setText(QtGui.QFileDialog.getExistingDirectory())
 
 
 if __name__ == "__main__":
