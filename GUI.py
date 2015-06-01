@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 import os
+from seq_identifier import run
 from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -129,6 +130,17 @@ class Ui_MainWindow(object):
     def output_buttonClicked(self):
         self.output_line.setText(QtGui.QFileDialog.getExistingDirectory())
 
+    def analyze(self):
+        donor_l = self.donor_line.text()
+        input_l = self.input_line.text() + "/"
+        output_l = self.output_line.text() + "/"
+
+        os.chdir(output_l)
+
+        for filename in os.listdir(output_l):
+            seq_identifier(donor_l, filename)
+
+        return
 
 if __name__ == "__main__":
     import sys
