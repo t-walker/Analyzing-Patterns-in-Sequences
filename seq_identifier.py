@@ -178,41 +178,24 @@ def CombineSamePattern(match):
         break
   return match
 
-
-def main(argv):
-
-  try:
-    opts, args = getopt.getopt(argv, "hp:s:d", ["help", "pattern=", "samplefile="])
-
-  except getopt.GetoptError:
-    usage()
-    sys.exit(2)
-
-  for opt, arg in opts:
-    if opt in ("-h", "--help"):
-      usage()
-      sys.exit()
-    elif opt == '-d':
-      print "[DEBUG MODE]"
-      GlobalVars.DEBUG = True
-    elif opt in ("-p", "--pattern"):
-      patternFile = arg
-    elif opt in ("-s", "--samplefile"):
-      sampleFile = arg
-
+def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, output):
   # CONFIGURATION VARIABLES
   noMatch = []
   totalNoMatches = 0
   results = {}
   results_ = {}
-  minLen = 4        # minimum length of pattern match
-  minGap = 0        # minimum gap 1 means don't search for pattern with gap length of 1
-  maxGap = 4        # anything over maxGap is considered a no match
+  minLen = min_len        # minimum length of pattern match
+  minGap = min_gap        # minimum gap 1 means don't search for pattern with gap length of 1
+  maxGap = max_gap        # anything over maxGap is considered a no match
   htmlToPdf = True  # set to True if you want pdf output file
 
   # Step 1: Retrieve allele patterns
-  alleleIds, allelePatterns, numPatterns, _ = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", True, "Allele Patterns")
+  donor_path, donorFile = os.path.split(donor_file)
 
+  alleleIds, allelePatterns, numPatterns, _ = GetSequences(donorFile, "fasta", donor_path + "/", True, "Allele Patterns")
+
+  sampleFile = sample_file
+  sample_path = input_path
   print "Sample File: " + str(sampleFile)
   print
 
@@ -220,7 +203,7 @@ def main(argv):
   print "Pattern Sequences:"
 
   if htmlToPdf:
-    pdfFile   = open("Results/" + sampleFile.split('.')[0] + ".pdf", "w+b")
+    pdfFile   = open(output + "/" + sampleFile.split('.')[0] + ".pdf", "w+b")
     bodyHTML  = "<span class=\"TEXT\">"
     bodyHTML += "Sample File: <strong>" + str(sampleFile) + "</strong><br /><br />"
     bodyHTML += "Pattern Sequences:<br />"
@@ -241,7 +224,7 @@ def main(argv):
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
   # Step 2: Load sample sequences and identify duplicates
-  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", False, "Sample Sequences")
+  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", sample_path + "/", False, "Sample Sequences")
 
   # Step 3: Identify what pattern the sample sequence belongs
   numSamps = len(sampleIds)
@@ -446,12 +429,28 @@ def main(argv):
 '''
 
 
-def run(pattern, sample):
-  patternFile = pattern
-  sampleFile = sample
 
-  #print "[DEBUG MODE]"
-  #GlobalVars.DEBUG = True
+
+def main(argv):
+
+  try:
+    opts, args = getopt.getopt(argv, "hp:s:d", ["help", "pattern=", "samplefile="])
+
+  except getopt.GetoptError:
+    usage()
+    sys.exit(2)
+
+  for opt, arg in opts:
+    if opt in ("-h", "--help"):
+      usage()
+      sys.exit()
+    elif opt == '-d':
+      print "[DEBUG MODE]"
+      GlobalVars.DEBUG = True
+    elif opt in ("-p", "--pattern"):
+      patternFile = arg
+    elif opt in ("-s", "--samplefile"):
+      sampleFile = arg
 
   # CONFIGURATION VARIABLES
   noMatch = []
