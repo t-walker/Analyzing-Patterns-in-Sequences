@@ -92,7 +92,7 @@ def main(argv):
     html = GlobalVars.HTML_HEAD_TAG
     pdfFile   = open(outputPath + "/" + sampFname + ".pdf", "w+b")
     htmlFile  = open(outputPath + "/" + sampFname + ".htm", "w")
-    bodyHTML  = "<span class=\"TEXT\"><a href=\"./Saliva65_Final_FASTA/\" >Go to downloads page</a>"
+    bodyHTML  = "<span class=\"TEXT\">"
     bodyHTML += "Sample File: <strong>" + str(sampleFile) + "</strong><br /><br />"
     bodyHTML += "Pattern Sequences:<br />"
     bodyHTML += "</span>"
