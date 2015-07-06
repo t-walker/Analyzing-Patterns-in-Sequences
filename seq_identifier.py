@@ -9,146 +9,8 @@ import GlobalVars
 
 from GetSequences import GetSequences
 from DeterminePattern import DeterminePattern
-from AssembleFASTAFiles import WriteToFile, WriteToFileNoMatches
+from AssembleFASTAFiles import WriteToFile, WriteToFileNoMatches, MakeDir
 from xhtml2pdf import pisa
-
-
-html="""
-<head>
-  <style type="text/css">
-    .A {
-      color: hotpink;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .B {
-      color: olivedrab;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .C {
-      color: orchid;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .D {
-      color: mediumvioletred;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .E {
-      color: lightseagreen;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .F {
-      color: indigo;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .G {
-      color: lightcoral;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .H {
-      color: red;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .I {
-      color: orangered;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .K {
-      color: steelblue;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .L {
-      color: red;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .M {
-      color: green;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .N {
-      color: blue;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .P {
-      color: darkgoldenrod;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .Q {
-      color: maroon;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .R {
-      color: midnightblue;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .S {
-      color: darkkhaki;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .T {
-      color: olive;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .V {
-      color: magenta;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .W {
-      color: rosybrown;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .X {
-      color: tomato;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .Y {
-      color: gold;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .Z {
-      color: royalblue;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .* {
-      color: slategray;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .TEXT {
-      color: black;
-      font-family: monospace;
-      font-size: 10px;
-    }
-    .SPACE {
-      color: white;
-      font-family: monospace;
-      font-size: 10px;
-    }
-  </style>
-<head>
-"""
 
 
 def usage():
@@ -181,13 +43,20 @@ def CombineSamePattern(match):
 def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, output):
   # CONFIGURATION VARIABLES
   noMatch = []
-  totalNoMatches = 0
   results = {}
   results_ = {}
+<<<<<<< HEAD
   minLen = min_len        # minimum length of pattern match
   minGap = min_gap        # minimum gap 1 means don't search for pattern with gap length of 1
   maxGap = max_gap        # anything over maxGap is considered a no match
+=======
+  minLen = 4        # minimum length of pattern match
+  minGap = 1        # minimum gap 1 means don't search for pattern with gap length of 1
+  maxGap = 4        # anything over maxGap is considered a no match
+>>>>>>> upstream/master
   htmlToPdf = True  # set to True if you want pdf output file
+  anchor = { "st":"KWG", "en":"GMA" } # set values for st and en if using anchors
+  #anchor = { "st":"", "en":"" }       # use this if not using anchors
 
   # Step 1: Retrieve allele patterns
   donor_path, donorFile = os.path.split(donor_file)
@@ -202,8 +71,20 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
   print "Pattern Sequences:"
 
+  sampFname = sampleFile.split('.')[0]
+  cwd = os.getcwd()
+  outputPath = cwd + '/Results/' + sampFname
+  MakeDir(outputPath)
+
+
   if htmlToPdf:
+<<<<<<< HEAD
     pdfFile   = open(output + "/" + sampleFile.split('.')[0] + ".pdf", "w+b")
+=======
+    html = GlobalVars.HTML_HEAD_TAG
+    pdfFile   = open(outputPath + "/" + sampFname + ".pdf", "w+b")
+    htmlFile  = open(outputPath + "/" + sampFname + ".htm", "w")
+>>>>>>> upstream/master
     bodyHTML  = "<span class=\"TEXT\">"
     bodyHTML += "Sample File: <strong>" + str(sampleFile) + "</strong><br /><br />"
     bodyHTML += "Pattern Sequences:<br />"
@@ -241,20 +122,23 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     bodyHTML += "Total number of sequences (with no duplicates): " + str(numSamps) + "<br />"
     bodyHTML += "Total number of sequences (with stop codons): " + str(totalSeqsStCodons)
     bodyHTML += "</span><hr /><br />"
+    matchHTML = "<div><pdf:nextpage /></div>"
 
   # Loop through all samples and determine it's allele pattern combination
   for num in range(0, numSamps):
     numberOfSequences = len(sampleIds[num].split(","))
     print sampleIds[num]
 
-    patternMatch, patKey, patHTML = DeterminePattern(sampleSequences[num],
-                                                     alleleIds,
-                                                     allelePatterns,
-                                                     numPatterns,
-                                                     patLen,
-                                                     minLen,
-                                                     minGap,
-                                                     htmlToPdf)
+    patternMatch, patKey, patHTML = DeterminePattern(sampleSequences[num]
+                                                     ,alleleIds
+                                                     ,allelePatterns
+                                                     ,numPatterns
+                                                     ,patLen
+                                                     ,minLen
+                                                     ,minGap
+                                                     ,htmlToPdf
+                                                     ,anchor
+                                                     )
 
     if patKey not in results:
       results[patKey] = numberOfSequences
@@ -265,7 +149,7 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
 
 
     if htmlToPdf:
-      sampIDHTML = "<span class=\"TEXT\">"
+      sampIDHTML = "<a name=\"" + sampleSequences[num] + "\"><span class=\"TEXT\">"
       groupBy = 115
       totalLen = len(sampleIds[num])
       start = 0
@@ -277,8 +161,8 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
         sampIDHTML += "<br />"
         start = end
         end = end + groupBy
-      sampIDHTML += "</span><br />"
-      bodyHTML += sampIDHTML + patHTML + "<br /><br />"
+      sampIDHTML += "</a></span><br />"
+      matchHTML += sampIDHTML + patHTML + "<br /><br />"
 
 
   sortedKeys = sorted(results, key=results.get, reverse=True)
@@ -287,8 +171,8 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
   # Printing GOOD MATCH table
   if htmlToPdf:
     resultTable  = "<div><pdf:nextpage /></div>"
-    resultTable += "<span class=\"TEXT\"><center>SEQUENCES CONSIDERED A <strong>MATCH</strong></center></span>"
-    resultTable += "<table width=\"720px\" border=\"1px\" cellpadding=\"2px\" class=\"TEXT\">"
+    resultTable += "<span class=\"TEXT\">SEQUENCES CONSIDERED A <strong>MATCH</strong></span>"
+    resultTable += "<table width=\"100%\" border=\"1px\" cellpadding=\"2px\" class=\"TEXT\">"
     resultTable += "<tr><td width=\"80px\" valign=\"bottom\" height=\"15px\"><strong># OF SEQ</strong></td><td valign=\"bottom\"><strong>PATTERN</strong></td></tr>"
 
   totalSeq = 0
@@ -301,7 +185,7 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     tempList = key.split("/")
     noMatch = False
     for t in tempList:
-      if ("gap" in t) and (int(t[:-3]) > maxGap):
+      if (("gap" in t) and (int(t[:-3]) > maxGap)) or ("missing anchor" == t):
         totalNoMatch += results[key]
         noMatchKeys.append(key)
         noMatch = True
@@ -313,11 +197,10 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     totalSeq += results[key]
     print "%4d\t%s" %(results[key], key)
 
-
-
     if htmlToPdf:
-      sResultTab = "<table cellpadding=\"0px\" width=\"640px\">"
+      sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
+    WriteToFile(sampFname, key, subResults, sampleIds, sampleSequences)
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -326,8 +209,8 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
         for letter in sampleSequences[sResult[1]]:
           sampHTML += "<span class=\"" + letter + "\">" + letter + "</span>"
 
-        sResultTab += "<tr><td class=\"TEXT\" width=\"50px\">" + str(sResult[0]) + \
-                      "</td><td>" + sampHTML + "</td></tr>"
+        sResultTab += "<tr><td class=\"TEXT\" width=\"50px\"><a href=\"#" + sampleSequences[sResult[1]] + "\">" + str(sResult[0]) + \
+                      "</a></td><td>" + sampHTML + "</td></tr>"
 
     if htmlToPdf:
       sResultTab  += "</table>"
@@ -338,14 +221,14 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     compute = totalSeqs - totalSeqsStCodons - totalNoMatch
     resultTable += "<tr><td style=\"vertical-align:middle\" align=\"center\"><em>" + str(totalSeq) + \
                    "</em></td><td style=\"vertical-align:middle\"><em>Seq w/ duplicates - Seq w/ stop codons - Seq (no match) = " + str(totalSeqs) + " - " + str(totalSeqsStCodons) + " - " + str(totalNoMatch) + " = " + str(compute) + "</em></td></tr>"
-    resultTable += "</table>"
+    resultTable += "</table><br />"
 
 
   # Printing NO MATCH table
   if htmlToPdf:
     resultTable += "<div><pdf:nextpage /></div>"
-    resultTable += "<span class=\"TEXT\"><center>SEQUENCES CONSIDERED A <strong>NO MATCH</strong></center></span>"
-    resultTable += "<table width=\"720px\" border=\"1px\" cellpadding=\"2px\" class=\"TEXT\">"
+    resultTable += "<span class=\"TEXT\">SEQUENCES CONSIDERED A <strong>NO MATCH</strong></span>"
+    resultTable += "<table width=\"100%\" border=\"1px\" cellpadding=\"2px\" class=\"TEXT\">"
     resultTable += "<tr><td width=\"80px\" valign=\"bottom\" height=\"15px\"><strong># OF SEQ</strong></td><td valign=\"bottom\"><strong>PATTERN</strong></td></tr>"
 
   print "SEQUENCES CONSIDERED A NO MATCH"
@@ -355,8 +238,9 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     print "%4d\t%s" %(results[key], key)
 
     if htmlToPdf:
-      sResultTab = "<table cellpadding=\"0px\" width=\"640px\">"
+      sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
+    WriteToFileNoMatches(sampFname, key, subResults, sampleIds, sampleSequences)
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -365,8 +249,8 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
         for letter in sampleSequences[sResult[1]]:
           sampHTML += "<span class=\"" + letter + "\">" + letter + "</span>"
 
-        sResultTab += "<tr><td class=\"TEXT\" width=\"50px\">" + str(sResult[0]) + \
-                      "</td><td>" + sampHTML + "</td></tr>"
+        sResultTab += "<tr><td class=\"TEXT\" width=\"50px\"><a href=\"#" + sampleSequences[sResult[1]] + "\">" + str(sResult[0]) + \
+                      "</a></td><td>" + sampHTML + "</td></tr>"
 
     if htmlToPdf:
       sResultTab  += "</table>"
@@ -381,36 +265,13 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
 
   # Write PDF File
   if htmlToPdf:
-    global html
-    html += bodyHTML + resultTable
+    html += bodyHTML + resultTable + "<br /><br />" + matchHTML + "<p style=\"margin-bottom: 15cm;\">&nbsp;</p>"
     pisa.CreatePDF(html, dest=pdfFile)
+    htmlFile.write(html)
+    htmlFile.close()
     pdfFile.close()
 
 '''
-    patternMatch = DeterminePattern(sampleSequences[num], num, allelePatterns, numPatterns)
-    if patternMatch != None:
-      patternMatch = CombineSamePattern(patternMatch)
-
-    if patternMatch != None:
-      pattern = ""
-      for index in range(0, len(patternMatch)):
-        pattern += str(patternMatch[index][1].num + 1)
-
-      if pattern not in results:
-        results[pattern] = [numberOfSequences, [patternMatch]]
-      else:
-        results[pattern][0] += numberOfSequences
-        results[pattern][1] += [patternMatch]
-    else:
-      totalNoMatches += numberOfSequences
-      noMatch += [(sampleIds[num], sampleSequences[num])]
-
-    if GlobalVars.DEBUG:
-      if patternMatch == None:
-        print "No Match\n"
-      else:
-        print "Matched!\n"
-
   sortedKeys = sorted(results, key=results.get, reverse=True)
   print "PATTERN   # SEQUENCES"
   for key in sortedKeys:
