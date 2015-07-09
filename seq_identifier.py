@@ -45,15 +45,9 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
   noMatch = []
   results = {}
   results_ = {}
-<<<<<<< HEAD
   minLen = min_len        # minimum length of pattern match
   minGap = min_gap        # minimum gap 1 means don't search for pattern with gap length of 1
   maxGap = max_gap        # anything over maxGap is considered a no match
-=======
-  minLen = 4        # minimum length of pattern match
-  minGap = 1        # minimum gap 1 means don't search for pattern with gap length of 1
-  maxGap = 4        # anything over maxGap is considered a no match
->>>>>>> upstream/master
   htmlToPdf = True  # set to True if you want pdf output file
   anchor = { "st":"KWG", "en":"GMA" } # set values for st and en if using anchors
   #anchor = { "st":"", "en":"" }       # use this if not using anchors
@@ -72,19 +66,14 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
   print "Pattern Sequences:"
 
   sampFname = sampleFile.split('.')[0]
-  cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampFname
+  outputPath = output + '/Results/' + sampFname
   MakeDir(outputPath)
 
 
   if htmlToPdf:
-<<<<<<< HEAD
-    pdfFile   = open(output + "/" + sampleFile.split('.')[0] + ".pdf", "w+b")
-=======
     html = GlobalVars.HTML_HEAD_TAG
     pdfFile   = open(outputPath + "/" + sampFname + ".pdf", "w+b")
     htmlFile  = open(outputPath + "/" + sampFname + ".htm", "w")
->>>>>>> upstream/master
     bodyHTML  = "<span class=\"TEXT\">"
     bodyHTML += "Sample File: <strong>" + str(sampleFile) + "</strong><br /><br />"
     bodyHTML += "Pattern Sequences:<br />"
