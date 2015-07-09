@@ -156,13 +156,13 @@ class Ui_MainWindow(object):
         self.run.setText(_translate("MainWindow", "Run...", None))
 
     def donor_buttonClicked(self):
-        self.don_all_line.setText(QtGui.QFileDialog.getOpenFileName("Select Donor File", home))
+        self.don_all_line.setText(QtGui.QFileDialog.getOpenFileName())
 
     def input_buttonClicked(self):
-        self.inp_all_line.setText(QtGui.QFileDialog.getExistingDirectory("Select Input Directory", home))
+        self.inp_all_line.setText(QtGui.QFileDialog.getExistingDirectory())
 
     def output_buttonClicked(self):
-        self.out_dir_line.setText(QtGui.QFileDialog.getExistingDirectory("Select Output Directory", home))
+        self.out_dir_line.setText(QtGui.QFileDialog.getExistingDirectory())
 
     def analyze(self):
         self.progressBar.setProperty("value", 0)
