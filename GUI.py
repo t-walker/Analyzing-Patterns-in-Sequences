@@ -11,6 +11,8 @@ from PyQt4 import QtCore, QtGui
 from os import listdir
 from os.path import isfile, join
 from seq_identifier import call_main
+from os.path import expanduser
+home = expanduser("~")
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -154,13 +156,13 @@ class Ui_MainWindow(object):
         self.run.setText(_translate("MainWindow", "Run...", None))
 
     def donor_buttonClicked(self):
-        self.don_all_line.setText(QtGui.QFileDialog.getOpenFileName())
+        self.don_all_line.setText(QtGui.QFileDialog.getOpenFileName("Select Donor File", home))
 
     def input_buttonClicked(self):
-        self.inp_all_line.setText(QtGui.QFileDialog.getExistingDirectory())
+        self.inp_all_line.setText(QtGui.QFileDialog.getExistingDirectory("Select Input Directory", home))
 
     def output_buttonClicked(self):
-        self.out_dir_line.setText(QtGui.QFileDialog.getExistingDirectory())
+        self.out_dir_line.setText(QtGui.QFileDialog.getExistingDirectory("Select Output Directory", home))
 
     def analyze(self):
         self.progressBar.setProperty("value", 0)
@@ -181,8 +183,11 @@ class Ui_MainWindow(object):
         minimum_gap_length = self.min_gap_len.value()
         maximum_gap_lengh = self.max_gap_len.value()
 
+        count = 0
         for sample in input_files:
             call_main(donor_file, input_path, sample, minimum_pattern_length, minimum_pattern_length, maximum_gap_length, output_directory)
+            count += 1
+            self.progressBar.setProperty("value", (count / len(input_files)*100))
 
         return
 
