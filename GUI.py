@@ -13,6 +13,9 @@ from os.path import isfile, join
 from seq_identifier import call_main
 from os.path import expanduser
 from reportlab import rl_settings
+
+import threading
+
 home = expanduser("~")
 
 try:
@@ -139,7 +142,6 @@ class Ui_MainWindow(object):
         self.out_dir_button.clicked.connect(self.output_buttonClicked)
         self.don_all_button.clicked.connect(self.donor_buttonClicked)
         self.run.clicked.connect(self.analyze)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -165,10 +167,27 @@ class Ui_MainWindow(object):
     def output_buttonClicked(self):
         self.out_dir_line.setText(QtGui.QFileDialog.getExistingDirectory())
 
+    def run_sample(self, sample):
+        minimum_pattern_length = self.min_pat_len.value()
+        minimum_gap_length = self.min_gap_len.value()
+        maximum_gap_length = self.max_gap_len.value()
+
+        donor_file = str(self.don_all_line.text())
+        input_path = str(self.inp_all_line.text())
+        output_directory = str(self.out_dir_line.text())
+
+        call_main(donor_file, input_path, sample, minimum_pattern_length, minimum_gap_length, maximum_gap_length, output_directory)
+        self.count += 1
+        self.val = (float(self.count)/float(len(self.usable_files)))*100
+        self.progressBar.setValue(self.val)
+        return
+
     def analyze(self):
         self.progressBar.setProperty("value", 0)
+        self.count = 0
         donor_file = ""
         input_files = []
+        self.usable_files = []
         output_directory = ""
 
         minimum_pattern_length = 0
@@ -184,12 +203,16 @@ class Ui_MainWindow(object):
         minimum_gap_length = self.min_gap_len.value()
         maximum_gap_lengh = self.max_gap_len.value()
 
-        count = 0
+        threads = []
         for sample in input_files:
-            call_main(donor_file, input_path, sample, minimum_pattern_length, minimum_pattern_length, maximum_gap_length, output_directory)
-            count += 1
-            self.progressBar.setProperty("value", (count / len(input_files)*100))
+            if sample[-2:] == "fa" or sample[-5:] == "fasta":
+                self.usable_files.append(sample)
 
+        for sample in self.usable_files:
+                t = threading.Thread(target=self.run_sample, args=(sample,))
+                threads.append(t)
+                t.daemon = True
+                t.start()
         return
 
 

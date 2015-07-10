@@ -94,7 +94,7 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
   # Step 2: Load sample sequences and identify duplicates
-  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", sample_path + "/", False, "Sample Sequences")
+  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", sample_path + "/", False, "Sample Sequences", output_path=outputPath)
 
   # Step 3: Identify what pattern the sample sequence belongs
   numSamps = len(sampleIds)
@@ -189,7 +189,7 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     if htmlToPdf:
       sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
-    WriteToFile(sampFname, key, subResults, sampleIds, sampleSequences)
+    WriteToFile(sampFname, key, subResults, sampleIds, sampleSequences, outputPath)
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -229,7 +229,7 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     if htmlToPdf:
       sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
-    WriteToFileNoMatches(sampFname, key, subResults, sampleIds, sampleSequences)
+    WriteToFileNoMatches(sampFname, key, subResults, sampleIds, sampleSequences, outputPath)
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -313,7 +313,7 @@ def main(argv):
   htmlToPdf = True  # set to True if you want pdf output file
 
   # Step 1: Retrieve allele patterns
-  alleleIds, allelePatterns, numPatterns, _ = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", True, "Allele Patterns")
+  alleleIds, allelePatterns, numPatterns, _ = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", True, "Allele Patterns", outputPath)
 
   print "Sample File: " + str(sampleFile)
   print
@@ -343,7 +343,7 @@ def main(argv):
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
   # Step 2: Load sample sequences and identify duplicates
-  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", False, "Sample Sequences")
+  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", False, "Sample Sequences", output_path=outputPath)
 
   # Step 3: Identify what pattern the sample sequence belongs
   numSamps = len(sampleIds)
