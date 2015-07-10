@@ -12,6 +12,7 @@ from os import listdir
 from os.path import isfile, join
 from seq_identifier import call_main
 from os.path import expanduser
+from reportlab import rl_settings
 home = expanduser("~")
 
 try:
