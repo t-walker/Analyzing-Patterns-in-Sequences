@@ -14,5 +14,5 @@ setup(
             "packages": packages
         }
     },
-    console = [{'script': 'GUI.py'}]
+    console = [{'script': 'GUI.py', "icon_resources": [(1, "SequencePatternAnalyzer.ico")]} ]
 )
