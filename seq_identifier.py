@@ -55,7 +55,7 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
   # Step 1: Retrieve allele patterns
   donor_path, donorFile = os.path.split(donor_file)
 
-  alleleIds, allelePatterns, numPatterns, _ = GetSequences(donorFile, "fasta", donor_path + "/", True, "Allele Patterns")
+  alleleIds, allelePatterns, numPatterns, _ = GetSequences(donorFile, "fasta", donor_path + "/", True, "Allele Patterns", output)
 
   sampleFile = sample_file
   sample_path = input_path

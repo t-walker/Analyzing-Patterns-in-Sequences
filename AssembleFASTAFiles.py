@@ -25,7 +25,7 @@ def MakeDir(folderName):
 
 
 def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
-  outputPath = output_path + '/Match'
+  outputPath = output_path + '/Match/'
   MakeDir(outputPath)
 
   fname = pattern.replace("/", "_")
@@ -57,7 +57,7 @@ def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
 
 
 def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
-  outputPath = output_path + '/No_Match'
+  outputPath = output_path + '/No_Match/'
   MakeDir(outputPath)
 
   fname = pattern.replace("/", "_")
@@ -65,7 +65,7 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, outp
   fname = fname.replace("(", "")
   fname = fname.replace(")", "")
   fname = fname.replace(" ", "_")
-
+  print "OUTPUT PATH\n", outputPath, "\nOUTPUT_PATH", output_path
   patternFpDups   = open(outputPath + '/P_' + fname + '_duplicates.fasta', 'w')
   patternFpNoDups = open(outputPath + '/P_' + fname + '_no_duplicates.fasta', 'w')
 
