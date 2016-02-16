@@ -12,7 +12,7 @@ import GlobalVars
 from AssembleFASTAFiles import WriteToFileStopCodons
 
 
-def GetSequences(fileName="", fileType="fasta", path="", isPatterns=False, name=""):
+def GetSequences(fileName="", fileType="fasta", path="", isPatterns=False, name="", output_path=None):
 
   ctr = 0          # counter
   seqIds = []      # allele pattern's id names
@@ -61,7 +61,7 @@ def GetSequences(fileName="", fileType="fasta", path="", isPatterns=False, name=
 
   # Write to file sequences with stop codons
   if not isPatterns and ctr2 > 0:
-    WriteToFileStopCodons(fileName.split('.')[0], seqsWithCodons)
+    WriteToFileStopCodons(fileName.split('.')[0], seqsWithCodons, output_path)
 
   return seqIds, sequences, ctr, ctr2
 # end GetSequences()

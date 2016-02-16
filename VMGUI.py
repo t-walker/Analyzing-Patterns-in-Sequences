@@ -2,20 +2,12 @@
 
 # Form implementation generated from reading ui file 'VM.ui'
 #
-# Created: Sun Jun 14 21:20:07 2015
+# Created: Tue Jul 14 21:18:49 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
-from os import listdir, getcwd
-from os.path import isfile, join
-from seq_identifier import call_main
-from os.path import expanduser
-from reportlab import rl_settings
-import threading
-
-home = expanduser("~")
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -31,10 +23,10 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(QtGui.QMainWindow):
+class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(400, 300)
+        MainWindow.resize(558, 429)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout_2 = QtGui.QGridLayout(self.centralwidget)
@@ -110,8 +102,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.max_gap_len.setObjectName(_fromUtf8("max_gap_len"))
         self.verticalLayout_9.addWidget(self.max_gap_len)
         self.horizontalLayout_11.addLayout(self.verticalLayout_9)
-        self.image = QtGui.QLabel()
-        self.horizontalLayout_11.addWidget(self.image)
+        self.label_5 = QtGui.QLabel(self.centralwidget)
+        self.label_5.setObjectName(_fromUtf8("label_5"))
+        self.horizontalLayout_11.addWidget(self.label_5)
         self.formLayout.setLayout(5, QtGui.QFormLayout.FieldRole, self.horizontalLayout_11)
         spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.formLayout.setItem(6, QtGui.QFormLayout.LabelRole, spacerItem2)
@@ -119,6 +112,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.run.setObjectName(_fromUtf8("run"))
         self.formLayout.setWidget(7, QtGui.QFormLayout.LabelRole, self.run)
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
+        self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.formLayout.setWidget(7, QtGui.QFormLayout.FieldRole, self.progressBar)
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
@@ -135,7 +129,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.label.setText(_translate("MainWindow", "Donor Alleles File", None))
@@ -148,73 +141,8 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.label_7.setText(_translate("MainWindow", "Minimum Pattern Length", None))
         self.label_8.setText(_translate("MainWindow", "Minimum Gap Length", None))
         self.label_6.setText(_translate("MainWindow", "Maximum Gap Length", None))
+        self.label_5.setText(_translate("MainWindow", "PICTURE GOES HERE", None))
         self.run.setText(_translate("MainWindow", "Run...", None))
-        self.pixmap = QtGui.QPixmap(getcwd() + "/SequencePatternAnalyzer.png")
-        self.pixmap.scaled(75,74, QtCore.Qt.KeepAspectRatio)
-        self.image.setPixmap(self.pixmap)
-        self.image.setAlignment(QtCore.Qt.AlignCenter)
-        self.inp_all_button.clicked.connect(self.input_buttonClicked)
-        self.out_dir_button.clicked.connect(self.output_buttonClicked)
-        self.don_all_button.clicked.connect(self.donor_buttonClicked)
-        self.run.clicked.connect(self.analyze)
-
-
-    def donor_buttonClicked(self):
-        self.don_all_line.setText(QtGui.QFileDialog.getOpenFileName())
-
-    def input_buttonClicked(self):
-        self.inp_all_line.setText(QtGui.QFileDialog.getExistingDirectory())
-
-    def output_buttonClicked(self):
-        self.out_dir_line.setText(QtGui.QFileDialog.getExistingDirectory())
-
-    def run_sample(self, sample):
-        minimum_pattern_length = self.min_pat_len.value()
-        minimum_gap_length = self.min_gap_len.value()
-        maximum_gap_length = self.max_gap_len.value()
-
-        donor_file = str(self.don_all_line.text())
-        input_path = str(self.inp_all_line.text())
-        output_directory = str(self.out_dir_line.text())
-
-        call_main(donor_file, input_path, sample, minimum_pattern_length, minimum_gap_length, maximum_gap_length, output_directory)
-        self.count += 1
-        self.val = (float(self.count)/float(len(self.usable_files)))*100
-        self.progressBar.setValue(self.val)
-        return
-
-    def analyze(self):
-        self.progressBar.setProperty("value", 0)
-        self.count = 0
-        donor_file = ""
-        input_files = []
-        self.usable_files = []
-        output_directory = ""
-
-        minimum_pattern_length = 0
-        minimum_gap_length = 0
-        maximum_gap_length = 0
-
-        donor_file = str(self.don_all_line.text())
-        input_path = str(self.inp_all_line.text())
-        input_files = listdir(str(self.inp_all_line.text()))
-        output_directory = str(self.out_dir_line.text())
-
-        minimum_pattern_length = self.min_pat_len.value()
-        minimum_gap_length = self.min_gap_len.value()
-        maximum_gap_lengh = self.max_gap_len.value()
-
-        threads = []
-        for sample in input_files:
-            if sample[-2:] == "fa" or sample[-5:] == "fasta":
-                self.usable_files.append(sample)
-
-        for sample in self.usable_files:
-                t = threading.Thread(target=self.run_sample, args=(sample,))
-                threads.append(t)
-                t.daemon = True
-                t.start()
-        return
 
 
 if __name__ == "__main__":
@@ -225,3 +153,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
