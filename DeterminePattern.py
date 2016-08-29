@@ -11,9 +11,36 @@ from DataLibs import *
 
 
 def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
-                      minLen = 4, minGap = 0, htmlToPdf = False):
+                      minLen = 4, minGap = 0, htmlToPdf = False,
+                      anchor = {"st":"", "en":""}):
   sampleLength = len(sample)
   matches = {}
+
+  hasAnchor = False
+  if anchor["st"] != "" and anchor["en"] != "":
+    hasAnchor = True
+    anchStIdx = sample.find(anchor["st"])
+    anchEnIdx = sample.find(anchor["en"])
+    if anchStIdx == -1 or anchEnIdx == -1: # -1 not found
+      patternID = "missing anchor"
+      print "%s" %(sample)
+      print "PATTERN: %s" %(patternID)
+      print
+      html = None
+      if htmlToPdf:
+        sampHTML = ""
+        for letter in sample:
+          sampHTML += "<span class=\"" + letter + "\">" + letter + "</span>"
+        sampHTML += "<br />"
+        html = sampHTML
+        html += "<span class=\"TEXT\">PATTERN: " + str(patternID) + "</span>"
+      return ([[(sampleLength, -1, (-1,-1), (0, sampleLength-1))]], patternID, html)
+
+  colSt = 0
+  sampLen = sampleLength
+  if hasAnchor: # start similarity where the anchor begins
+    colSt = anchStIdx
+    sampLen = anchEnIdx + 3
 
   for patNum in range(len(patterns)):
     line = [None] * patLen[patNum]
@@ -24,17 +51,17 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
       if row+1 != patLen[patNum]:
         nxtLetP = patterns[patNum][row+1]
       col = 0
-      for col in range(sampleLength):
+      for col in range(colSt,sampLen):
         letS = sample[col]
         nxtLetS = -1
-        if col+1 != sampleLength:
+        if col+1 != sampLen:
           nxtLetS = sample[col+1]
 
         # letter match
         if letS == letP:
-          if row > 0 and col > 0 and line[row-1][col-1] > 0:
+          if row > 0 and col > colSt and line[row-1][col-1] > 0:
             line[row][col] = line[row-1][col-1] + 1
-            if (row+1 == patLen[patNum] or col+1 == sampleLength) or \
+            if (row+1 == patLen[patNum] or col+1 == sampLen) or \
                (nxtLetS != nxtLetP and line[row][col] >= minLen):
               patStIdx = row-line[row][col] + 1
               patIndices = (patStIdx,row)
@@ -46,7 +73,7 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
                 matches[samStIdx] = []
               matches[samStIdx].append(match)
           else:
-              if col + minLen < sampleLength and \
+              if col + minLen < sampLen and \
                  row + minLen < patLen[patNum]:
                 line[row][col] = 1
 
@@ -56,7 +83,7 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
           if row > 0:
             if line[row-1][col-1] < minLen:
               i = 1
-              while row-i >= 0 and col-i >= 0 and i <= minLen:
+              while row-i >= 0 and col-i >= colSt and i <= minLen:
                 if line[row-i][col-i] == 0:
                   break
                 line[row-i][col-i] = 0
@@ -173,6 +200,8 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
   samEnIdx = -1
   finMatchLen = len(finMatches)
   patHTML = ""
+
+
   for i in range(finMatchLen):
     matchList = finMatches[i]
     nxSamStIdx = -1
@@ -182,6 +211,7 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
       nxSamStIdx = finMatches[i+1][0][3][0] # get next start index
     subPatID = []
     matchLLen = len(matchList)
+
     for j in range(matchLLen):
       matchHTML = ""
       match = matchList[j]
@@ -206,7 +236,7 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
 
 
     # check gap at the beginning
-    if i == 0 and samStIdx != 0:
+    if i == 0 and samStIdx != colSt:
       patternID += str(samStIdx)+"gap" + "/"
 
     subPatID = ','.join(subPatID)
@@ -221,7 +251,7 @@ def DeterminePattern(sample, patIds, patterns, numPatterns, patLen,
       patternID += str(gap)+"gap" + "/"
 
   # check gap at the end
-  gap = sampleLength - samEnIdx
+  gap = sampLen - samEnIdx
   if gap > 0:
     patternID += str(gap)+"gap" + "/"
 
