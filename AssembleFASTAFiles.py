@@ -24,9 +24,8 @@ def MakeDir(folderName):
 #end MakeDir()
 
 
-def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs):
-  cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampFileName + '/Match'
+def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
+  outputPath = output_path + '/Match/'
   MakeDir(outputPath)
 
   fname = pattern.replace("/", "_")
@@ -57,9 +56,8 @@ def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs):
 #end WriteToFile()
 
 
-def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs):
-  cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampFileName + '/No_Match'
+def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
+  outputPath = output_path + '/No_Match/'
   MakeDir(outputPath)
 
   fname = pattern.replace("/", "_")
@@ -67,7 +65,7 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs):
   fname = fname.replace("(", "")
   fname = fname.replace(")", "")
   fname = fname.replace(" ", "_")
-
+  print "OUTPUT PATH\n", outputPath, "\nOUTPUT_PATH", output_path
   patternFpDups   = open(outputPath + '/P_' + fname + '_duplicates.fasta', 'w')
   patternFpNoDups = open(outputPath + '/P_' + fname + '_no_duplicates.fasta', 'w')
 
@@ -91,9 +89,8 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs):
 #end WriteToFileNoMatches()
 
 
-def WriteToFileStopCodons(sampFileName, matches):
-  cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampFileName + '/No_Match'
+def WriteToFileStopCodons(sampFileName, matches, output_path):
+  outputPath = output_path + '/No_Match'
   MakeDir(outputPath)
 
   matchesFp = open(outputPath + '/with_stop_codons.fasta', 'w')

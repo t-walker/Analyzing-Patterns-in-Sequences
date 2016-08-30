@@ -40,42 +40,25 @@ def CombineSamePattern(match):
         break
   return match
 
-
-def main(argv):
-
-  try:
-    opts, args = getopt.getopt(argv, "hp:s:d", ["help", "pattern=", "samplefile="])
-
-  except getopt.GetoptError:
-    usage()
-    sys.exit(2)
-
-  for opt, arg in opts:
-    if opt in ("-h", "--help"):
-      usage()
-      sys.exit()
-    elif opt == '-d':
-      print "[DEBUG MODE]"
-      GlobalVars.DEBUG = True
-    elif opt in ("-p", "--pattern"):
-      patternFile = arg
-    elif opt in ("-s", "--samplefile"):
-      sampleFile = arg
-
+def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, output):
   # CONFIGURATION VARIABLES
   noMatch = []
   results = {}
   results_ = {}
-  minLen = 4        # minimum length of pattern match
-  minGap = 1        # minimum gap 1 means don't search for pattern with gap length of 1
-  maxGap = 4        # anything over maxGap is considered a no match
+  minLen = min_len        # minimum length of pattern match
+  minGap = min_gap        # minimum gap 1 means don't search for pattern with gap length of 1
+  maxGap = max_gap        # anything over maxGap is considered a no match
   htmlToPdf = True  # set to True if you want pdf output file
   anchor = { "st":"KWG", "en":"GMA" } # set values for st and en if using anchors
   #anchor = { "st":"", "en":"" }       # use this if not using anchors
 
   # Step 1: Retrieve allele patterns
-  alleleIds, allelePatterns, numPatterns, _ = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", True, "Allele Patterns")
+  donor_path, donorFile = os.path.split(donor_file)
 
+  alleleIds, allelePatterns, numPatterns, _ = GetSequences(donorFile, "fasta", donor_path + "/", True, "Allele Patterns", output)
+
+  sampleFile = sample_file
+  sample_path = input_path
   print "Sample File: " + str(sampleFile)
   print
 
@@ -83,8 +66,7 @@ def main(argv):
   print "Pattern Sequences:"
 
   sampFname = sampleFile.split('.')[0]
-  cwd = os.getcwd()
-  outputPath = cwd + '/Results/' + sampFname
+  outputPath = output + '/Results/' + sampFname
   MakeDir(outputPath)
 
 
@@ -112,7 +94,7 @@ def main(argv):
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
   # Step 2: Load sample sequences and identify duplicates
-  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", False, "Sample Sequences")
+  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", sample_path + "/", False, "Sample Sequences", output_path=outputPath)
 
   # Step 3: Identify what pattern the sample sequence belongs
   numSamps = len(sampleIds)
@@ -207,7 +189,7 @@ def main(argv):
     if htmlToPdf:
       sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
-    WriteToFile(sampFname, key, subResults, sampleIds, sampleSequences)
+    WriteToFile(sampFname, key, subResults, sampleIds, sampleSequences, outputPath)
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -247,7 +229,7 @@ def main(argv):
     if htmlToPdf:
       sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
-    WriteToFileNoMatches(sampFname, key, subResults, sampleIds, sampleSequences)
+    WriteToFileNoMatches(sampFname, key, subResults, sampleIds, sampleSequences, outputPath)
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -297,12 +279,28 @@ def main(argv):
 '''
 
 
-def run(pattern, sample):
-  patternFile = pattern
-  sampleFile = sample
 
-  #print "[DEBUG MODE]"
-  #GlobalVars.DEBUG = True
+
+def main(argv):
+
+  try:
+    opts, args = getopt.getopt(argv, "hp:s:d", ["help", "pattern=", "samplefile="])
+
+  except getopt.GetoptError:
+    usage()
+    sys.exit(2)
+
+  for opt, arg in opts:
+    if opt in ("-h", "--help"):
+      usage()
+      sys.exit()
+    elif opt == '-d':
+      print "[DEBUG MODE]"
+      GlobalVars.DEBUG = True
+    elif opt in ("-p", "--pattern"):
+      patternFile = arg
+    elif opt in ("-s", "--samplefile"):
+      sampleFile = arg
 
   # CONFIGURATION VARIABLES
   noMatch = []
@@ -315,7 +313,7 @@ def run(pattern, sample):
   htmlToPdf = True  # set to True if you want pdf output file
 
   # Step 1: Retrieve allele patterns
-  alleleIds, allelePatterns, numPatterns, _ = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", True, "Allele Patterns")
+  alleleIds, allelePatterns, numPatterns, _ = GetSequences(patternFile, "fasta", os.getcwd() + "/Library/", True, "Allele Patterns", outputPath)
 
   print "Sample File: " + str(sampleFile)
   print
@@ -345,7 +343,7 @@ def run(pattern, sample):
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
   # Step 2: Load sample sequences and identify duplicates
-  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", False, "Sample Sequences")
+  sampleIds, sampleSequences, totalSeqs, totalSeqsStCodons =  GetSequences(sampleFile, "fasta", os.getcwd() + "/Samples/", False, "Sample Sequences", output_path=outputPath)
 
   # Step 3: Identify what pattern the sample sequence belongs
   numSamps = len(sampleIds)
