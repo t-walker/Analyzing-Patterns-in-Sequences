@@ -140,11 +140,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.label.setText(_translate("MainWindow", "Donor Alleles File", None))
         self.don_all_button.setText(_translate("MainWindow", "Open...", None))
-        self.label_2.setText(_translate("MainWindow", "Input Alleles File", None))
+        self.label_2.setText(_translate("MainWindow", "Input Alleles Directory", None))
         self.inp_all_button.setText(_translate("MainWindow", "Open...", None))
         self.label_3.setText(_translate("MainWindow", "Output Directory", None))
         self.out_dir_button.setText(_translate("MainWindow", "Open..", None))
-        self.label_4.setText(_translate("MainWindow", "Analysis Settings", None))
+        self.label_4.setText(_translate("MainWindow", "", None))
         self.label_7.setText(_translate("MainWindow", "Minimum Pattern Length", None))
         self.label_8.setText(_translate("MainWindow", "Minimum Gap Length", None))
         self.label_6.setText(_translate("MainWindow", "Maximum Gap Length", None))
@@ -203,7 +203,10 @@ class Ui_MainWindow(QtGui.QMainWindow):
         minimum_pattern_length = self.min_pat_len.value()
         minimum_gap_length = self.min_gap_len.value()
         maximum_gap_lengh = self.max_gap_len.value()
-
+        print("\n\n\n\n")
+        print(minimum_gap_length)
+        print(minimum_pattern_length)
+        print(maximum_gap_lengh)
         threads = []
         for sample in input_files:
             if sample[-2:] == "fa" or sample[-5:] == "fasta":
