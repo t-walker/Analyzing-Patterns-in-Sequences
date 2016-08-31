@@ -37,12 +37,12 @@ def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
   try:
       patternFpDups = open(outputPath + '/' + fname + '_dp.fasta', 'w')
   except:
-      patternFpDups = open(outputPath + '/' + fname[:20] + "_ex_dp.fasta", 'w')
+      pass
 
   try:
       patternFpNoDups = open(outputPath + '/' + fname + '_ndp.fasta', 'w')
   except:
-      patternFpNoDups = open(outputPath + '/' + fname[:20] + '_ex_ndp.fasta', 'w')
+      pass 
 
   count = 0
   for match in matches:
@@ -79,12 +79,19 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, outp
   try:
       patternFpDups = open(outputPath + '/' + fname + '_dp.fasta', 'w')
   except:
-      patternFpDups = open(outputPath + '/' + fname[:20] + "_ex_dp.fasta", 'w')
+      patternFpDups = open(outputPath + '/' + 'extraneous_patterns', 'a')
+      patternFpDups.write("Pattern:\n")
+      patternFpDups.write(fname)
+      patternFpDups.write("------------------------------------------------------------------")
+      
 
   try:
       patternFpNoDups = open(outputPath + '/' + fname + '_ndp.fasta', 'w')
   except:
-      patternFpNoDups = open(outputPath + '/' + fname[:20] + '_ex_ndp.fasta', 'w')
+      patternFpNoDups = open(outputPath + '/' + 'extraneous_patterns', 'a')
+      patternFpNoDups.write("Pattern:\n")
+      patternFpNoDups.write(fname)
+      patternFpDups.write("------------------------------------------------------------------")
 
   count = 0
   for match in matches:
