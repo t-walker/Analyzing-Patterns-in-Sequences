@@ -149,7 +149,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.label_8.setText(_translate("MainWindow", "Minimum Gap Length", None))
         self.label_6.setText(_translate("MainWindow", "Maximum Gap Length", None))
         self.run.setText(_translate("MainWindow", "Run...", None))
-        self.pixmap = QtGui.QPixmap(getcwd() + "/SequencePatternAnalyzer.png")
+        self.pixmap = QtGui.QPixmap("./images/SequencePatternAnalyzer.png")
         self.pixmap.scaled(75,74, QtCore.Qt.KeepAspectRatio)
         self.image.setPixmap(self.pixmap)
         self.image.setAlignment(QtCore.Qt.AlignCenter)
@@ -178,10 +178,13 @@ class Ui_MainWindow(QtGui.QMainWindow):
         output_directory = str(self.out_dir_line.text())
 
         call_main(donor_file, input_path, sample, minimum_pattern_length, minimum_gap_length, maximum_gap_length, output_directory)
-        self.count += 1
-        self.val = (float(self.count)/float(len(self.usable_files)))*100
-        self.progressBar.setValue(self.val)
+        self.progressBar.setValue(self.progressBar.value() + self.increment)
+
         return
+
+    def run_analyze(self):
+        t = threading.Thread(target=self.analyze)
+        t.start()
 
     def analyze(self):
         self.progressBar.setProperty("value", 0)
@@ -190,10 +193,6 @@ class Ui_MainWindow(QtGui.QMainWindow):
         input_files = []
         self.usable_files = []
         output_directory = ""
-
-        minimum_pattern_length = 0
-        minimum_gap_length = 0
-        maximum_gap_length = 0
 
         donor_file = str(self.don_all_line.text())
         input_path = str(self.inp_all_line.text())
@@ -212,13 +211,16 @@ class Ui_MainWindow(QtGui.QMainWindow):
             if sample[-2:] == "fa" or sample[-5:] == "fasta":
                 self.usable_files.append(sample)
 
+        self.increment = (1.0 / (len(self.usable_files))) * 100
+
         for sample in self.usable_files:
                 t = threading.Thread(target=self.run_sample, args=(sample,))
                 threads.append(t)
                 t.daemon = True
                 t.start()
-        return
 
+        print("Done!")
+        return
 
 if __name__ == "__main__":
     import sys

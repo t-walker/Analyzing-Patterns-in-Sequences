@@ -232,7 +232,10 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     if htmlToPdf:
       sResultTab = "<table cellpadding=\"0px\" width=\"100%\">"
     subResults = sorted(results_[key], reverse=True)
+    print "Writing out matches..."
     WriteToFileNoMatches(sampFname, key, subResults, sampleIds, sampleSequences, outputPath)
+
+    print "Generating HTML for results..."
     for sResult in subResults:
       print "\t%4d\t%s" %(sResult[0], sampleSequences[sResult[1]])
 
@@ -257,9 +260,11 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
 
   # Write PDF File
   if htmlToPdf:
+    print "Generating PDF for results, this may take awhile..."
     html += bodyHTML + resultTable + "<br /><br />" + matchHTML + "<p style=\"margin-bottom: 15cm;\">&nbsp;</p>"
     pisa.CreatePDF(html, dest=pdfFile)
     htmlFile.write(html)
+    print "Cleaning up..."
     htmlFile.close()
     pdfFile.close()
 

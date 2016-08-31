@@ -42,7 +42,7 @@ def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
   try:
       patternFpNoDups = open(outputPath + '/' + fname + '_ndp.fasta', 'w')
   except:
-      pass 
+      pass
 
   count = 0
   for match in matches:
@@ -81,16 +81,15 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, outp
   except:
       patternFpDups = open(outputPath + '/' + 'extraneous_patterns', 'a')
       patternFpDups.write("Pattern:\n")
-      patternFpDups.write(fname)
+      patternFpDups.write(fname + "\n")
       patternFpDups.write("------------------------------------------------------------------")
-      
 
   try:
       patternFpNoDups = open(outputPath + '/' + fname + '_ndp.fasta', 'w')
   except:
       patternFpNoDups = open(outputPath + '/' + 'extraneous_patterns', 'a')
       patternFpNoDups.write("Pattern:\n")
-      patternFpNoDups.write(fname)
+      patternFpNoDups.write(fname + "\n")
       patternFpDups.write("------------------------------------------------------------------")
 
   count = 0
@@ -106,6 +105,9 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, outp
       patternFpDups.write('>%s\n' %(id))
       patternFpDups.write(seq)
       count += 1
+
+  patternFpDups.write("\n\n")
+  patternFpNoDups.write("\n\n")
 
   patternFpDups.close()
   patternFpNoDups.close()
