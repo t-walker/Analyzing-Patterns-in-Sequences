@@ -32,9 +32,17 @@ def WriteToFile(sampFileName, pattern, matches, sampIds, sampSeqs, output_path):
   fname = fname.replace(",", "-")
   fname = fname.replace("(", "")
   fname = fname.replace(")", "")
+  fname = fname.replace("gap", "g")
 
-  patternFpDups   = open(outputPath + '/P_' + fname + '_duplicates.fasta', 'w')
-  patternFpNoDups = open(outputPath + '/P_' + fname + '_no_duplicates.fasta', 'w')
+  try:
+      patternFpDups = open(outputPath + '/' + fname + '_dp.fasta', 'w')
+  except:
+      patternFpDups = open(outputPath + '/' + fname[:20] + "_ex_dp.fasta", 'w')
+
+  try:
+      patternFpNoDups = open(outputPath + '/' + fname + '_ndp.fasta', 'w')
+  except:
+      patternFpNoDups = open(outputPath + '/' + fname[:20] + '_ex_ndp.fasta', 'w')
 
   count = 0
   for match in matches:
@@ -65,9 +73,18 @@ def WriteToFileNoMatches(sampFileName, pattern, matches, sampIds, sampSeqs, outp
   fname = fname.replace("(", "")
   fname = fname.replace(")", "")
   fname = fname.replace(" ", "_")
+  fname = fname.replace("gap", "g")
+
   print "OUTPUT PATH\n", outputPath, "\nOUTPUT_PATH", output_path
-  patternFpDups   = open(outputPath + '/P_' + fname + '_duplicates.fasta', 'w')
-  patternFpNoDups = open(outputPath + '/P_' + fname + '_no_duplicates.fasta', 'w')
+  try:
+      patternFpDups = open(outputPath + '/' + fname + '_dp.fasta', 'w')
+  except:
+      patternFpDups = open(outputPath + '/' + fname[:20] + "_ex_dp.fasta", 'w')
+
+  try:
+      patternFpNoDups = open(outputPath + '/' + fname + '_ndp.fasta', 'w')
+  except:
+      patternFpNoDups = open(outputPath + '/' + fname[:20] + '_ex_ndp.fasta', 'w')
 
   count = 0
   for match in matches:
