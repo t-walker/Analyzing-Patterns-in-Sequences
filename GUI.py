@@ -56,6 +56,7 @@ class analyzeSamplesThread(QThread):
 
     def run(self):
         for sample in self.samples:
+            self.emit(SIGNAL('processing(QString)'), sample)
             self._run_sample(sample)
             self.emit(SIGNAL('processed(QString)'), sample)
             self.sleep(1)
@@ -173,15 +174,17 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.stop = QtGui.QPushButton("Stop")
         self.stop.setObjectName(_fromUtf8("stop"))
 
-        hbox = QtGui.QHBoxLayout()
-        hbox.addStretch(1)
-        hbox.addWidget(self.run)
-        hbox.addWidget(self.stop)
-        self.formLayout.setLayout(14, QtGui.QFormLayout.LabelRole, hbox)
-
+        self.hbox_progress_bar = QtGui.QHBoxLayout()
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
-        self.formLayout.setWidget(14, QtGui.QFormLayout.FieldRole, self.progressBar)
+        self.hbox_progress_bar.addWidget(self.progressBar)
+        self.gridLayout.addLayout(self.hbox_progress_bar, 2, 0, 1, 1)
+
+        self.hbox_process_buttons = QtGui.QHBoxLayout()
+        self.hbox_process_buttons.addWidget(self.run)
+        self.hbox_process_buttons.addWidget(self.stop)
+        self.gridLayout.addLayout(self.hbox_process_buttons, 3, 0, 1, 1)
+
         self.gridLayout.addLayout(self.formLayout, 1, 0, 1, 1)
         self.gridLayout_2.addLayout(self.gridLayout, 0, 0, 1, 1)
 
@@ -259,6 +262,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                                                input_path, output_directory,
                                                min_len, min_gap, max_gap,
                                                st_anchor, en_anchor)
+        self.connect(self.get_thread, SIGNAL("processing(QString)"), self.sampleProcessing)
         self.connect(self.get_thread, SIGNAL("processed(QString)"), self.sampleProcessed)
         self.connect(self.get_thread, SIGNAL("finished()"), self.done)
 
@@ -267,15 +271,18 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.stop.clicked.connect(self.get_thread.terminate)
         self.run.setEnabled(False)
 
+    def sampleProcessing(self, sample):
+        self.statusbar.showMessage("Analyzing " + sample + "...")
+
     def sampleProcessed(self, sample):
         self.progressBar.setValue(self.progressBar.value() + 1)
-        self.statusbar.showMessage(sample + " done.", msecs=3000)
 
     def done(self):
         print("Done!")
         self.run.setEnabled(True)
         self.stop.setEnabled(False)
         self.progressBar.setValue(0)
+        self.statusbar.showMessage("")
         QtGui.QMessageBox.information(self, "Sequence Pattern Analyzer", "Analysis of all sequence patterns completed!")
 
 if __name__ == "__main__":
