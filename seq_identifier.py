@@ -13,12 +13,6 @@ from AssembleFASTAFiles import WriteToFile, WriteToFileNoMatches, MakeDir
 from xhtml2pdf import pisa
 
 
-def usage():
-  print 'seq_identifier.py -p <patternFile> -s <sampleFile>'
-
-##################################################################
-# NEEDS SOME CHANGING TO CONSIDER MISSING CHARACTER IN SAMPLE    #
-##################################################################
 def CombineSamePattern(match):
   totalPatterns = len(match)
   if totalPatterns == 1:
@@ -40,16 +34,16 @@ def CombineSamePattern(match):
         break
   return match
 
-def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, output):
+def call_main(donor_file, input_path, sample_file, output, min_len=4, min_gap=2, max_gap=4, html_to_pdf=True, st_anchor="KWG", en_anchor="GMA"):
   # CONFIGURATION VARIABLES
   noMatch = []
   results = {}
   results_ = {}
-  minLen = min_len        # minimum length of pattern match
-  minGap = min_gap        # minimum gap 1 means don't search for pattern with gap length of 1
-  maxGap = max_gap        # anything over maxGap is considered a no match
-  htmlToPdf = True  # set to True if you want pdf output file
-  anchor = { "st":"KWG", "en":"GMA" } # set values for st and en if using anchors
+  minLen = min_len         # minimum length of pattern match
+  minGap = min_gap         # minimum gap 1 means don't search for pattern with gap length of 1
+  maxGap = max_gap         # anything over maxGap is considered a no match
+  htmlToPdf = html_to_pdf  # set to True if you want pdf output file
+  anchor = { "st":st_anchor, "en":en_anchor } # set values for st and en if using anchors
   #anchor = { "st":"", "en":"" }       # use this if not using anchors
 
   # Step 1: Retrieve allele patterns
@@ -59,8 +53,16 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
 
   sampleFile = sample_file
   sample_path = input_path
+  print "Configuration Settings"
+  print "----------------------"
+  print "Minimum Length: " + str(minLen)
+  print "Minimum Gap: " + str(minGap)
+  print "Maximum Gap: " + str(maxGap)
+  print "PDF Output: " + str(htmlToPdf)
+  print "Start Anchor: " + str(anchor["st"])
+  print "End Anchor: " + str(anchor["en"])
   print "Sample File: " + str(sampleFile)
-  print
+  print "\n"
 
   print "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
   print "Pattern Sequences:"
@@ -78,6 +80,11 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     pdfFile   = open(outputPath + "/" + sampFname + ".pdf", "w+b")
     htmlFile  = open(outputPath + "/" + sampFname + ".htm", "w")
     bodyHTML  = "<span class=\"TEXT\">"
+    bodyHTML += "Minimum Length: <strong>" + str(minLen) + "</strong><br />"
+    bodyHTML += "Minimum Gap: <strong>" + str(minGap) + "</strong><br />"
+    bodyHTML += "Maximum Gap: <strong>" + str(maxGap) + "</strong><br />"
+    bodyHTML += "Start Anchor: <strong>" + str(anchor["st"]) + "</strong><br />"
+    bodyHTML += "End Anchor: <strong>" + str(anchor["en"]) + "</strong><br />"
     bodyHTML += "Sample File: <strong>" + str(sampleFile) + "</strong><br /><br />"
     bodyHTML += "Pattern Sequences:<br />"
     bodyHTML += "</span>"
@@ -267,7 +274,3 @@ def call_main(donor_file, input_path, sample_file, min_len, min_gap, max_gap, ou
     print "Cleaning up..."
     htmlFile.close()
     pdfFile.close()
-
-
-if __name__ == '__main__':
-  main(sys.argv[1:])
