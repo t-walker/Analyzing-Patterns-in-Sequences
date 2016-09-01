@@ -90,6 +90,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.horizontalLayout.addWidget(self.don_all_line)
         self.don_all_button = QtGui.QPushButton(self.centralwidget)
         self.don_all_button.setObjectName(_fromUtf8("don_all_button"))
+        self.don_all_button.setMaximumWidth(30)
         self.horizontalLayout.addWidget(self.don_all_button)
         self.formLayout.setLayout(1, QtGui.QFormLayout.FieldRole, self.horizontalLayout)
 
@@ -103,6 +104,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.horizontalLayout_2.addWidget(self.inp_all_line)
         self.inp_all_button = QtGui.QPushButton(self.centralwidget)
         self.inp_all_button.setObjectName(_fromUtf8("inp_all_button"))
+        self.inp_all_button.setMaximumWidth(30)
         self.horizontalLayout_2.addWidget(self.inp_all_button)
         self.formLayout.setLayout(2, QtGui.QFormLayout.FieldRole, self.horizontalLayout_2)
 
@@ -116,6 +118,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.horizontalLayout_3.addWidget(self.out_dir_line)
         self.out_dir_button = QtGui.QPushButton(self.centralwidget)
         self.out_dir_button.setObjectName(_fromUtf8("out_dir_button"))
+        self.out_dir_button.setMaximumWidth(30)
         self.horizontalLayout_3.addWidget(self.out_dir_button)
         self.formLayout.setLayout(4, QtGui.QFormLayout.FieldRole, self.horizontalLayout_3)
 
@@ -198,11 +201,11 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "Sequence Pattern Analyzer", None))
         self.label.setText(_translate("MainWindow", "Donor Alleles File", None))
-        self.don_all_button.setText(_translate("MainWindow", "Open...", None))
+        self.don_all_button.setText(_translate("MainWindow", "...", None))
         self.label_2.setText(_translate("MainWindow", "Input Alleles Directory", None))
-        self.inp_all_button.setText(_translate("MainWindow", "Open...", None))
+        self.inp_all_button.setText(_translate("MainWindow", "...", None))
         self.label_3.setText(_translate("MainWindow", "Output Directory", None))
-        self.out_dir_button.setText(_translate("MainWindow", "Open...", None))
+        self.out_dir_button.setText(_translate("MainWindow", "...", None))
         self.label_7.setText(_translate("MainWindow", "Minimum Pattern Length", None))
         self.label_8.setText(_translate("MainWindow", "Minimum Gap Length", None))
         self.label_6.setText(_translate("MainWindow", "Maximum Gap Length", None))
