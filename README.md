@@ -1,4 +1,13 @@
 Analyzing-Patterns-in-Sequences
 ===============================
 
-python seq_identifier.py -p \<patterns.fa\> -s \<sample.fa\> -d
+##Software Requirements
+* Python 2.7
+* BioPython, `sudo pip install biopython`
+* xhtml2pdf python module, `sudo pip install xhtml2pdf`
+* PyQt4, `sudo apt-get install python-qt4`
+
+##How to use the GUI
+```
+python GUI.py
+```
